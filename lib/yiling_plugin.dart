@@ -173,8 +173,8 @@ Future setIp({int ip1,int ip2,int ip3,int ip4,int duankou}) async {
 }
 
 ///查看与服务器的连接状态
-Future<bool> quesyIpConn() async {
-  bool result = await _channel.invokeMethod("quesyIpConn");
+Future<String> quesyIpConn() async {
+  String result = await _channel.invokeMethod("quesyIpConn");
   return result;
 }
 

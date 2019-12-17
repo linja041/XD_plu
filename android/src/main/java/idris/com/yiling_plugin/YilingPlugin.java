@@ -54,17 +54,27 @@ public class YilingPlugin implements MethodCallHandler {
     } else if (call.method.equals("stopXinDian")) {
       YiLingHandler.stopXinDian(call,result);
     } else if (call.method.equals("startCunKa")) {
-        YiLingHandler.startCunKa(call,result);
+      YiLingHandler.startCunKa(call,result);
     } else if (call.method.equals("stopCunKa")) {
-        YiLingHandler.stopCunKa(call,result);
+      YiLingHandler.stopCunKa(call,result);
     } else if (call.method.equals("startWiFi")) {
-        YiLingHandler.startWiFi(call,result);
+      YiLingHandler.startWiFi(call,result);
     } else if (call.method.equals("stopWiFi")) {
-        YiLingHandler.stopWiFi(call,result);
+      YiLingHandler.stopWiFi(call,result);
     } else if (call.method.equals("startPeiwang")) {
-        YiLingHandler.startPeiwang(call,result);
-    } else if (call.method.equals("goPeiwang")) {
-        YiLingHandler.goPeiwang(call,result);
+      YiLingHandler.startPeiwang(call,result);
+    } else if (call.method.equals("setWiFiName")) {
+      YiLingHandler.setWiFiName(call,result);
+    } else if (call.method.equals("setWifiPSW")) {
+      YiLingHandler.setWiFiPSW(call,result);
+    } else if (call.method.equals("connWifi")) {
+      YiLingHandler.connWifi(call,result);
+    } else if (call.method.equals("wiFiEle")) {
+      YiLingHandler.wiFiEle(call,result);
+    } else if (call.method.equals("setIp")) {
+      YiLingHandler.setIp(call,result);
+    } else if (call.method.equals("quesyIpConn")) {
+      YiLingHandler.quesyIpConn(call,result);
     } else if (call.method.equals("checkBlePermissionWay")) {
       YiLingHandler.checkBlePermissionWay(call,result);
     } else if (call.method.equals("requestBlePermissionWay")) {
@@ -74,7 +84,7 @@ public class YilingPlugin implements MethodCallHandler {
     } else if (call.method.equals("requestWritePermissionWay")) {
       YiLingHandler.requestWritePermissionWay(call,result);
     } else if (call.method.equals("checkReadPermissionWay")) {
-        YiLingHandler.checkReadPermissionWay(call,result);
+      YiLingHandler.checkReadPermissionWay(call,result);
     } else if (call.method.equals("requestReadPermissionWay")) {
       YiLingHandler.requestReadPermissionWay(call,result);
     } else if (call.method.equals("duKa")) {
@@ -82,7 +92,7 @@ public class YilingPlugin implements MethodCallHandler {
     } else if (call.method.equals("duKaAndIntent")) {
       YiLingHandler.duKaAndIntent(call,result);
     } else if (call.method.equals("duKaAndIntent2")) {
-        YiLingHandler.duKaAndIntent2(call,result);
+      YiLingHandler.duKaAndIntent2(call,result);
     } else {
       result.notImplemented();
     }
