@@ -18,14 +18,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return OKToast(
-      child:MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Plugin example app'),
+        child:MaterialApp(
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Text('Plugin example app'),
+            ),
+            body: Test(),
           ),
-          body: Test(),
-        ),
-      )
+        )
     );
   }
 }
@@ -45,6 +45,8 @@ class TestState extends State<Test>{
   String tf = "";
   String rtc = "";
   String wifiResult = "";
+  String name;
+  String pas;
   bool xinDian = false;
   bool wifi = false;
   bool cunka = false;
@@ -60,7 +62,14 @@ class TestState extends State<Test>{
     yl.responseFromScan.listen((data){
       print("responseFromScan=====>"+data.address);
       setState(() {
-        mac = data.address;
+        mac = data.name;
+      });
+    });
+
+    yl.responseFromDevStop.listen((data){
+//      print("responseFromScan=====>"+data.address);
+      setState(() {
+        mac = data;
       });
     });
 
@@ -78,8 +87,15 @@ class TestState extends State<Test>{
       });
     });
 
+    //心电数据
     yl.responseFromXindian.listen((data){
       print("responseFromXindian=====>" + data.data1.toString());
+    });
+    //跳转到联系医生监听
+    yl.responseFromGoLXYS.listen((data){
+      if(data == "gotoLXYS"){
+        showToast(data);
+      }
     });
 
     yl.responseFromRTC.listen((data){
@@ -106,10 +122,41 @@ class TestState extends State<Test>{
       });
     });
 
-    yl.responseFromGoLXYS.listen((data){
-      if(data == "gotoLXYS"){
-        showToast(data);
-      }
+//设置WiFi名称监听
+    yl.responseFromSetWiFiName.listen((data){
+      setState(() {
+        name = data;
+      });
+    });
+
+//设置WiFi密码监听
+    yl.responseFromSetWiFiPSW.listen((data){
+      setState(() {
+        pas = data;
+      });
+    });
+
+//连接WiFi监听
+    yl.responseFromConnWifi.listen((data){
+      setState(() {
+        ele = data;
+      });
+    });
+
+//连接WiFi监听
+    yl.responseFromWifiStatus.listen((data){
+      setState(() {
+        ele = data;
+      });
+    });
+//连接服务器命令结果(成功返回“连接到服务器成功”/失败返回“连接到服务器失败”)
+    yl.responseFromConnIp.listen((data){
+      print("ConnIpResult===========" + data.toString());
+    });
+
+//与服务器连接状态(返回“连接正常”/“连接异常”)
+    yl.responseFromConnIpStatus.listen((data){
+      print("ConnIpStatusResult===========" + data.toString());
     });
   }
 
@@ -211,17 +258,18 @@ class TestState extends State<Test>{
 
   void goXinDian({String filename,String name,int sex,int age,int mode,String docName,String divName,String ava}){
     yl.goXinDian(fileName: filename ,
-        name: name ,
-        sex: sex ,
-        age: age ,
-        mode: mode ,
-        docName: docName ,
-        divName: divName,
-        ava: ava,
+      name: name ,
+      sex: sex ,
+      age: age ,
+      mode: mode ,
+      docName: docName ,
+      divName: divName,
+      ava: ava,
     ).then((result){
     });
   }
 
+  //1、WiFi模块上电
   void startWiFi(){
     setState(() {
       wifi = true;
@@ -233,13 +281,40 @@ class TestState extends State<Test>{
 
     });
   }
-
-  void goPeiwang(){
-    yl.goPeiwang().then((result){
+  //1、设置配网模式
+  void startPeiwang(){
+    yl.startPeiwang().then((result){
 
     });
   }
+  //2、检查WiFi模块上电状态
+  void wifiStatus(){
+    yl.wiFiEle().then((result){
 
+      print("wiFiEle"+result.toString());
+    });
+  }
+  //3、配置WiFi名称
+  void wifiname(){
+    yl.setWifiName(wifiName:"TP-LINK_9EB6").then((result){
+
+      print("wifiname:   "+result.toString());
+    });
+  }
+  //4、配置WiFi密码
+  void wifiPassword(){
+    yl.setWifiPSW(wifiPSW:"zjhlwmj01").then((result){
+
+      print("wifiPassword:   "+result.toString());
+    });
+  }
+
+  //5、设备连网
+  void connWifi(){
+    yl.connWiFi();
+  }
+
+  //关闭WiFi模块
   void stopWiFi(){
     yl.stopWiFi().then((result){
       setState(() {
@@ -251,10 +326,14 @@ class TestState extends State<Test>{
     });
   }
 
-  void startPeiwang(){
-    yl.startPeiwang().then((result){
+  //设置服务器端口
+  void setIp(){
+    yl.setIp(ip1: 192,ip2: 168,ip3: 0,ip4: 134,duankou: 80);
+  }
 
-    });
+  //查看与服务器的连接状态
+  void quesyIpConn(){
+    yl.quesyIpConn();
   }
 
   void stopCunka(){
@@ -298,86 +377,96 @@ class TestState extends State<Test>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
-      height: double.maxFinite,
-      child:  Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                      "已找到设备：" + mac
-                  ),
-                ),
-                Center(
-                  child: Text(
-                      "设备电量：" + ele
-                  ),
-                ),
-                Center(
-                  child: Text(
-                      "储存空间：" + tf
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    "RTC: " + rtc??"",
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    "wifi: " + wifiResult??"",
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    "cunka: " + cunkaResult??"",
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    "卡信息: " + ka.toString()??"",
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  width: 150,
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: startScan,
-                      child: Text("开始扫描"),
+        width: double.maxFinite,
+        height: double.maxFinite,
+        child:  Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                        "已找到设备：" + mac
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 45,
-                      margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                      decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                        borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                  Center(
+                    child: Text(
+                        "设备电量：" + ele
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                        "储存空间：" + tf
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "RTC: " + rtc??"",
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "wifi: " + wifiResult??"",
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "cunka: " + cunkaResult??"",
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "卡信息: " + ka.toString()??"",
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "设置名称: " + name.toString()??"",
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "设置密码: " + pas.toString()??"",
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                    width: 150,
+                    height: 45,
+                    margin: EdgeInsets.only(bottom: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: startScan,
+                        child: Text("开始扫描"),
                       ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: (){
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: (){
                               goXinDian(
                                   filename:"20191222",
                                   name:"林骏雄",
@@ -388,164 +477,224 @@ class TestState extends State<Test>{
                                   divName:"8848",
                                   ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg");
                             },
-                          child: Text("获取电量"),
+                            child: Text("获取电量"),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      height: 45,
-                      margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                      decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                        borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                      ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: getTF,
-                          child: Text("可用存储空间"),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: wifiStatus,
+                            child: Text("可用存储空间"),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      height: 45,
-                      margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                      decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                        borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                      ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: syncRTC,
-                          child: Text("同步RTC"),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: syncRTC,
+                            child: Text("同步RTC"),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-                Container(
-                  width: 150,
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: xinDian?stopXinDian:startXinDian,
-                      child: xinDian?Text("停止检测"):Text("开始检测（单导展示）"),
+                  Container(
+                    width: 150,
+                    height: 45,
+                    margin: EdgeInsets.only(bottom: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
                     ),
-                  ),
-                ),
-
-                Container(
-                  width: 150,
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap:(){
-                        if(cunka){
-                          stopCunka();
-                        }else{
-                          startCunka("20191256","林骏雄",1,20,0);
-                        }
-                      },
-                      child: cunka?Text("停止存卡"):Text("开始存卡"),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 150,
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap:duKaAndIntent2,
-                      child: Text("读卡"),
-                    ),
-                  ),
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 150,
-                      height: 45,
-                      margin: EdgeInsets.only(bottom: 5.0),
-                      decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                        borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: xinDian?stopXinDian:startXinDian,
+                        child: xinDian?Text("停止检测"):Text("开始检测（单导展示）"),
                       ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: wifi?stopWiFi:startWiFi,
-                          child: wifi?Text("关闭WiFi模块"):Text("开启WiFi模块"),
+                    ),
+                  ),
+
+                  Container(
+                    width: 150,
+                    height: 45,
+                    margin: EdgeInsets.only(bottom: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap:(){
+                          if(cunka){
+                            stopCunka();
+                          }else{
+                            startCunka("20191256","林骏雄",1,20,0);
+                          }
+                        },
+                        child: cunka?Text("停止存卡"):Text("开始存卡"),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    height: 45,
+                    margin: EdgeInsets.only(bottom: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap:duKaAndIntent2,
+                        child: Text("读卡"),
+                      ),
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 150,
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: wifi?stopWiFi:startWiFi,
+                            child: wifi?Text("关闭WiFi模块"):Text("开启WiFi模块"),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 150,
-                      height: 45,
-                      margin: EdgeInsets.only(bottom: 5.0),
-                      decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                        borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                      ),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: startPeiwang,
-                          child: Text("设置配网模式"),
+                      Container(
+                        width: 150,
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: startPeiwang,
+                            child: Text("设置配网模式"),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-                Container(
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: wifiname,
+                            child: Text("name"),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: wifiPassword,
+                            child: Text("password"),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: connWifi,
+                            child: Text("conn"),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: setIp,
+                            child: Text("connIp"),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 45,
+                        margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                        decoration: new BoxDecoration(
+                          border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                          borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                        ),
+                        child: Center(
+                          child: GestureDetector(
+                            onTap: quesyIpConn,
+                            child: Text("connIpStatus"),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: goPeiwang,
-                      child: Text("去配网"),
-                    ),
-                  ),
-                ),
 
-                Container(
-                  height: 45,
-                  margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                  decoration: new BoxDecoration(
-                    border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                    borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: duKaAndIntent,
-                      child: Text("quduka"),
+                  Container(
+                    height: 45,
+                    margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: duKaAndIntent,
+                        child: Text("quduka"),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      )
+          ],
+        )
     );
   }
 

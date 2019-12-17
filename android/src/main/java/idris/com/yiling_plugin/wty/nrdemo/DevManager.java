@@ -184,6 +184,8 @@ public class DevManager {
                 if (mSearchDevices != null && mSearchDevices.size() == 0) {
                     DeviceScannState deviceConnState = new DeviceScannState();
                     deviceConnState.scannState = 1;
+                    String result = "设备断开";
+                    YiLingResponseHandler.searchStopped(result);
                     EventBus.getDefault().post(deviceConnState);
                 }
             }
@@ -250,6 +252,7 @@ public class DevManager {
                                 public void run() {
                                     for (int i = 0; i < value.length; i++) {
 
+
                                         if (head1Byte != null && head2Byte != null) {
                                             if (tempDataCount == 0) {
                                                 allDataCount = getPackLen(head2Byte);
@@ -279,7 +282,7 @@ public class DevManager {
 
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf1) {
                                                         DevManager.getInstance().writeEMS(sendAuthBT(onePack));
-                                                        EventBus.getDefault().post(new AuSucc());
+                                                        //EventBus.getDefault().post(new AuSucc());
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
                                                     }
@@ -303,7 +306,7 @@ public class DevManager {
                                                             }
                                                         });
 
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd2) {
                                                         Log.e("cunka", "onNotify: " + ByteUtils.toHexString(onePack, " "));
@@ -346,7 +349,7 @@ public class DevManager {
                                                         });
                                                         System.out.println("-------------->电量：" + ckSucc.code + "<--------------");
 
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xc1) {
                                                         Log.e("dianliang", "onNotify: " + ByteUtils.toHexString(onePack, " "));
@@ -365,29 +368,81 @@ public class DevManager {
                                                                 YiLingResponseHandler.sendRTCResult(time);
                                                             }
                                                         });
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
 
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xa7) {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        WifiRes3 ckSucc = new WifiRes3();
-                                                        ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //WifiRes3 ckSucc = new WifiRes3();
+                                                        int state = onePack[2];
+                                                        String result = "";
+                                                        if(state == 0){
+                                                            result = "连接到服务器成功";
+                                                        }else{
+                                                            result = "连接到服务器失败";
+                                                        }
+                                                        final String finalResult = result;
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.connIpResult(finalResult);
+                                                            }
+                                                        });
+
+                                                        //EventBus.getDefault().post(ckSucc);
+
+                                                    }
+
+                                                    if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xb6) {
+                                                        Log.e("wifi", "onNotify: " + ByteUtils.toHexString(onePack, " "));
+                                                        int state = onePack[2];
+                                                        String result = "";
+                                                        if(state == 0){
+                                                            result = "wifi 模块未上电";
+                                                        }else if(state == 1){
+                                                            result = "wifi 模块上电，\n" +
+                                                                    "数据未发送。";
+                                                        }else{
+                                                            result = "wifi 数据正在发送";
+                                                        }
+                                                        final String finalResult = result;
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.WifiStatusResult(finalResult);
+                                                            }
+                                                        });
+
+                                                        //EventBus.getDefault().post(ckSucc);
 
                                                     }
 
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xa9) {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        WifiRes4 ckSucc = new WifiRes4();
-                                                        ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+//                                                        WifiRes4 ckSucc = new WifiRes4();
+                                                        int state = onePack[2];
+                                                        final String result;
+                                                        if (state == 0){
+                                                            result = "连接正常";
+                                                        }else{
+                                                            result = "连接异常";
+                                                        }
+                                                        final String finalResult = result;
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.connIpStatusResult(result);
+                                                            }
+                                                        });
+
+                                                        //EventBus.getDefault().post(ckSucc);
 
                                                     }
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xaf) {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
                                                         CunkRes1 ckSucc = new CunkRes1();
                                                         ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
 
                                                     }
 
@@ -395,7 +450,7 @@ public class DevManager {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
                                                         CunkRes ckSucc = new CunkRes();
                                                         ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
 
                                                     }
 
@@ -418,7 +473,7 @@ public class DevManager {
                                                                 YiLingResponseHandler.wifiResult(result);
                                                             }
                                                         });
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
 
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xa3) {
@@ -445,7 +500,7 @@ public class DevManager {
                                                             case 5:
                                                                 result = "wifi连接成功";
                                                                 break;
-                                                                default:break;
+                                                            default:break;
                                                         }
                                                         final String finalResult = result;
                                                         mActivity.runOnUiThread(new Runnable() {
@@ -457,15 +512,50 @@ public class DevManager {
                                                                 YiLingResponseHandler.wifiResult(finalResult);
                                                             }
                                                         });
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        //EventBus.getDefault().post(ckSucc);
+                                                    }
+
+                                                    if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xbc) {
+                                                        Log.e("wifi", "onNotify: " + ByteUtils.toHexString(onePack, " "));
+                                                        int state = onePack[2];
+                                                        final String result;
+                                                        if (state == 0) {
+                                                            result = "WiFi密码设置正常";
+                                                        }else{
+                                                            result = "WiFi密码设置失败";
+                                                        }
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.wifiSetPSWResult(result);
+                                                            }
+                                                        });
+//                                                        //EventBus.getDefault().post(ckSucc);
+                                                    }
+
+                                                    if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xbb) {
+                                                        Log.e("wifi", "onNotify: " + ByteUtils.toHexString(onePack, " "));
+                                                        int state = onePack[2];
+                                                        final String result;
+                                                        if (state == 0) {
+                                                            result = "网络已连接";
+                                                        }else{
+                                                            result = "连接失败";
+                                                        }
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.connWifiResult(result);
+                                                            }
+                                                        });
+//                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
 
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xa5) {
                                                         Log.e("wifi", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        WifiRes2 ckSucc = new WifiRes2();
-                                                        ckSucc.state = onePack[2];
+                                                        int state = onePack[2];
                                                         final String result;
-                                                        if (ckSucc.state == 0) {
+                                                        if (state == 0) {
                                                             result = "配网设置成功";
                                                         }else{
                                                             result = "配网设置失败";
@@ -479,7 +569,7 @@ public class DevManager {
                                                                 YiLingResponseHandler.wifiResult(result);
                                                             }
                                                         });
-                                                        EventBus.getDefault().post(ckSucc);
+//                                                        //EventBus.getDefault().post(ckSucc);
                                                     }
 
                                                     if (onePack.length > 20 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xe2) {
@@ -579,6 +669,26 @@ public class DevManager {
 
                                                     }
 
+                                                    if (onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xb9) {
+                                                        Log.e("wifi", "onNotify: " + ByteUtils.toHexString(onePack, " "));
+                                                        int state = onePack[2];
+                                                        final String result;
+                                                        if (state == 0) {
+                                                            result = "WiFi名称设定成功";
+                                                        }else{
+                                                            result = "WiFi名称设定失败";
+                                                        }
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            /**
+                                                             * *******************************************
+                                                             */
+                                                            public void run() {
+                                                                YiLingResponseHandler.wifiSetNameResult(result);
+                                                            }
+                                                        });
+//                                                        //EventBus.getDefault().post(ckSucc);
+                                                    }
 
                                                 }
                                                 continue;
@@ -586,6 +696,7 @@ public class DevManager {
 
 
                                         }
+
                                         if (head1Byte == null && (value[i] & 0xff) == HEAD_1) {
                                             head1Byte = HEAD_1;
                                             continue;
@@ -639,7 +750,10 @@ public class DevManager {
     }
 
     public boolean isHead(int head) {
-        return head == 0xf1 || head == 0xf3 || head == 0xe2 || head == 0xe3 || head == 0xd2 || head == 0xc1 || head == 0xc3 || head == 0xa1 || head == 0xa3 || head == 0xa5|| head == 0xd4|| head == 0xa7|| head == 0xa9|| head == 0xaf|| head == 0xd8|| head == 0xd6;
+        return head == 0xf1 || head == 0xf3 || head == 0xe2 || head == 0xe3 || head == 0xd2 ||
+                head == 0xc1 || head == 0xc3 || head == 0xa1 || head == 0xa3 || head == 0xa5||
+                head == 0xd4 || head == 0xa7 || head == 0xa9 || head == 0xaf || head == 0xd8||
+                head == 0xd6 || head == 0xb9 || head == 0xb6 || head == 0xbc || head == 0xbb;
     }
 
     public int getPackLen(int head) {
@@ -691,6 +805,18 @@ public class DevManager {
             return 5;
         }
         if (head == 0xd6) {
+            return 2;
+        }
+        if (head == 0xb9) {
+            return 2;
+        }
+        if (head == 0xb6) {
+            return 2;
+        }
+        if (head == 0xbc) {
+            return 2;
+        }
+        if (head == 0xbb) {
             return 2;
         }
 
@@ -813,6 +939,73 @@ public class DevManager {
             targets[i] = (byte) ((s >>> offset) & 0xff);
         }
         return targets;
+    }
+
+
+    public byte[] setWifiName(String wifiName) {
+        byte[] xinDian_end = new byte[35];
+        xinDian_end[0] = (byte) 0xFD;
+        xinDian_end[1] = (byte) 0xB7;
+        for (int i = 0; i < 32; i++) {
+
+            if(wifiName.getBytes().length < 32){
+                if(i < wifiName.getBytes().length){
+                    xinDian_end[2 + i] = wifiName.getBytes()[i];
+                }else{
+                    xinDian_end[2 + i ] = (byte) 0x00;
+                }
+
+            }else{
+                xinDian_end[2 + i] = wifiName.getBytes()[i];
+            }
+        }
+        xinDian_end[34] = Crc7Chksum(xinDian_end, 35);
+
+        return xinDian_end;
+
+    }
+
+    public byte[] setWifiPSW(String wifiPSW) {
+        byte[] xinDian_end = new byte[35];
+        xinDian_end[0] = (byte) 0xFD;
+        xinDian_end[1] = (byte) 0xB8;
+        for (int i = 0; i < 32; i++) {
+
+            if(wifiPSW.getBytes().length < 32){
+                if(i < wifiPSW.getBytes().length){
+                    xinDian_end[2 + i] = wifiPSW.getBytes()[i];
+                }else{
+                    xinDian_end[2 + i ] = (byte) 0x00;
+                }
+
+            }else{
+                xinDian_end[2 + i] = wifiPSW.getBytes()[i];
+            }
+        }
+        xinDian_end[34] = Crc7Chksum(xinDian_end, 35);
+
+        return xinDian_end;
+
+    }
+
+    public byte[] connWifi() {
+        byte[] connWifi = new byte[4];
+        connWifi[0] = (byte) 0xFD;
+        connWifi[1] = (byte) 0xBA;
+        connWifi[2] = (byte) 0x00;
+        connWifi[3] = Crc7Chksum(connWifi, 4);
+
+        return connWifi;
+    }
+
+    public byte[] wifiStatus() {
+        byte[] xinDian_end = new byte[4];
+        xinDian_end[0] = (byte) 0xFD;
+        xinDian_end[1] = (byte) 0xb5;
+        xinDian_end[2] = (byte) 0x00;
+        xinDian_end[3] = Crc7Chksum(xinDian_end, 4);
+
+        return xinDian_end;
     }
 
     public byte[] setIpPort(byte ip1, byte ip2, byte ip3, byte ip4, short port) {

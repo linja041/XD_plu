@@ -17,6 +17,14 @@ public class YiLingResponseHandler {
     }
 
     /**
+     * 设备断开
+     * @param result
+     */
+    public static void searchStopped(String result){
+        channel.invokeMethod("searchStopped",result);
+    }
+
+    /**
      * 扫描结果
      * @param result
      */
@@ -72,7 +80,53 @@ public class YiLingResponseHandler {
         channel.invokeMethod("wifiResult",result);
     }
 
+    /**
+     * wifi设置名称结果
+     * @param result
+     */
+    public static void wifiSetNameResult(String result){
+        channel.invokeMethod("wifiSetNameResult",result);
+    }
 
+    /**
+     * wifi设置密码结果
+     * @param result
+     */
+    public static void wifiSetPSWResult(String result){
+        channel.invokeMethod("wifiSetPSWResult",result);
+    }
+
+    /**
+     * 连接wifi结果
+     * @param result
+     */
+    public static void connWifiResult(String result){
+        channel.invokeMethod("connWifiResult",result);
+    }
+
+    /**
+     * WiFi模块状态结果
+     * @param result
+     */
+    public static void WifiStatusResult(String result){
+        channel.invokeMethod("WifiStatusResult",result);
+    }
+
+    /**
+     * 连接服务器命令回调
+     * @param result
+     */
+    public static void connIpResult(String result){
+        channel.invokeMethod("connIpResult",result);
+    }
+
+    /**
+     * 连接服务器命令回调
+     * @param result
+     */
+    public static void connIpStatusResult(String result){
+        channel.invokeMethod("connIpStatusResult",result);
+    }
 
     /**
      * 读卡信息

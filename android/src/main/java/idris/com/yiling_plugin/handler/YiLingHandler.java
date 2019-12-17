@@ -293,6 +293,88 @@ public class YiLingHandler {
         registrar.activity().startActivity(intent);
     }
 
+    /**
+     * 设置WiFi名称
+     * @param call
+     * @param result
+     */
+    public static void setWiFiName(MethodCall call, MethodChannel.Result result) {
+        String wifiName = call.argument("wifiName");
+        if(wifiName != null){
+            DevManager.getInstance().writeEMS(DevManager.getInstance().setWifiName(wifiName));
+            result.success(wifiName+" = set success");
+        }else{
+            result.success("wifiName was null");
+        }
+    }
+
+    /**
+     * 设置WiFi密码
+     * @param call
+     * @param result
+     */
+    public static void setWiFiPSW(MethodCall call, MethodChannel.Result result) {
+        String wifiPSW = call.argument("wifiPSW");
+        if(wifiPSW != null){
+            DevManager.getInstance().writeEMS(DevManager.getInstance().setWifiPSW(wifiPSW));
+            result.success(wifiPSW+" = set success");
+        }else{
+            result.success("wifiPSW was null");
+        }
+    }
+
+    /**
+     * 连接WiFi
+     * @param call
+     * @param result
+     */
+    public static void connWifi(MethodCall call, MethodChannel.Result result) {
+        DevManager.getInstance().writeEMS(DevManager.getInstance().connWifi());
+        result.success("success");
+    }
+
+    /**
+     * 查询上电
+     * @param call
+     * @param result
+     */
+    public static void wiFiEle(MethodCall call, MethodChannel.Result result) {
+        DevManager.getInstance().writeEMS(DevManager.getInstance().wifiStatus());
+        result.success("success");
+    }
+
+    /**
+     * 配置服务器地址和端口
+     * 需传入 ip字段1-4 和端口号
+     * @param call
+     * @param result
+     */
+    public static void setIp(MethodCall call, MethodChannel.Result result) {
+        int p1 = (int) call.argument("ip1");
+        int p2 = (int) call.argument("ip2");
+        int p3 = (int) call.argument("ip3");
+        int p4 = (int) call.argument("ip4");
+        int duan = (int) call.argument("duankou");
+        byte ip1 = (byte) p1;
+        byte ip2 = (byte) p2;
+        byte ip3 = (byte) p3;
+        byte ip4 = (byte) p4;
+        short duankou = (short) duan;
+        DevManager.getInstance().writeEMS(DevManager.getInstance().setIpPort(ip1,ip2,ip3,ip4,duankou));
+        result.success("success");
+    }
+
+
+    /**
+     * 查看与服务器的连接状态
+     * @param call
+     * @param result
+     */
+    public static void quesyIpConn(MethodCall call, MethodChannel.Result result) {
+        DevManager.getInstance().writeEMS(DevManager.getInstance().quesyIpConn());
+        result.success("success");
+    }
+
     //蓝牙权限申请
     public static void checkBlePermissionWay(MethodCall call, MethodChannel.Result result) {
         boolean isPermission = checkBlePermission(registrar.context());

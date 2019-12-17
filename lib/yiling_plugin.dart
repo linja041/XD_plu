@@ -131,6 +131,53 @@ Future duKaAndIntent2({int position}) async {
   return result;
 }
 
+///设置WiFi名称
+Future setWifiName({String wifiName}) async {
+  String result = await _channel.invokeMethod("setWiFiName",{
+    "wifiName" : wifiName,
+  });
+  return result;
+}
+
+///设置WiFi密码
+Future setWifiPSW({String wifiPSW}) async {
+  String result = await _channel.invokeMethod("setWifiPSW",{
+    "wifiPSW" : wifiPSW,
+  });
+  return result;
+}
+
+///连接WiFi
+Future connWiFi() async {
+  String result = await _channel.invokeMethod("connWifi");
+  return result;
+}
+
+///查看WiFi模块状态
+Future wiFiEle() async {
+  String result = await _channel.invokeMethod("wiFiEle");
+  return result;
+}
+
+///设置服务器ip地址&端口
+///需按要求传入四个ip字段+端口；
+Future setIp({int ip1,int ip2,int ip3,int ip4,int duankou}) async {
+  String result = await _channel.invokeMethod("setIp",{
+    "ip1" : ip1,
+    "ip2" : ip2,
+    "ip3" : ip3,
+    "ip4" : ip4,
+    "duankou" : duankou,
+  });
+  return result;
+}
+
+///查看与服务器的连接状态
+Future<bool> quesyIpConn() async {
+  bool result = await _channel.invokeMethod("quesyIpConn");
+  return result;
+}
+
 ///检查蓝牙权限
 Future<bool> checkBlePermissionWay() async {
   bool result = await _channel.invokeMethod("checkBlePermissionWay", {});
@@ -172,6 +219,12 @@ StreamController<ScanResult> _scanResultController = new StreamController.broadc
 
 Stream<ScanResult> get responseFromScan => _scanResultController.stream;
 
+
+///设备断开
+StreamController<String> _devStopResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromDevStop => _devStopResultController.stream;
+
 ///电量
 StreamController<double> _btResultController = new StreamController.broadcast();
 
@@ -196,6 +249,36 @@ Stream<XindianResult> get responseFromXindian => _xindianResultController.stream
 StreamController<String> _WiFiResultController = new StreamController.broadcast();
 
 Stream<String> get responseFromWiFi => _WiFiResultController.stream;
+
+///配置WiFi名称结果
+StreamController<String> _SetWifiNameResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromSetWiFiName => _SetWifiNameResultController.stream;
+
+///配置WiFi密码结果
+StreamController<String> _SetWifiPSWResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromSetWiFiPSW => _SetWifiPSWResultController.stream;
+
+///连接WiFi结果
+StreamController<String> _ConnWifiResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromConnWifi => _ConnWifiResultController.stream;
+
+///wifi模块状态结果
+StreamController<String> _WifiStatusResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromWifiStatus => _WifiStatusResultController.stream;
+
+///连接服务器命令回调
+StreamController<String> _connIpResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromConnIp => _connIpResultController.stream;
+
+///连接服务器状态回调
+StreamController<String> _connIpStatusResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromConnIpStatus => _connIpStatusResultController.stream;
 
 ///cunka
 StreamController<String> _cunkaResultController = new StreamController.broadcast();
@@ -239,6 +322,27 @@ Future<dynamic> _handler(MethodCall methodCall) {
         .add(kaResult.fromList(methodCall.arguments));
   }else if ("LXYSOrder" == methodCall.method) {
     _goLXYSResultController
+        .add(methodCall.arguments);
+  }else if ("wifiSetNameResult" == methodCall.method) {
+    _SetWifiNameResultController
+        .add(methodCall.arguments);
+  }else if ("wifiSetPSWResult" == methodCall.method) {
+    _SetWifiPSWResultController
+        .add(methodCall.arguments);
+  }else if ("connWifiResult" == methodCall.method) {
+    _ConnWifiResultController
+        .add(methodCall.arguments);
+  }else if ("WifiStatusResult" == methodCall.method) {
+    _WifiStatusResultController
+        .add(methodCall.arguments);
+  }else if ("connIpResult" == methodCall.method) {
+    _connIpResultController
+        .add(methodCall.arguments);
+  }else if ("connIpStatusResult" == methodCall.method) {
+    _connIpStatusResultController
+        .add(methodCall.arguments);
+  }else if ("searchStopped" == methodCall.method) {
+    _devStopResultController
         .add(methodCall.arguments);
   }
   return Future.value(true);
