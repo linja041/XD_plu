@@ -400,8 +400,7 @@ public class DevManager {
                                                         if(state == 0){
                                                             result = "wifi 模块未上电";
                                                         }else if(state == 1){
-                                                            result = "wifi 模块上电，\n" +
-                                                                    "数据未发送。";
+                                                            result = "wifi 模块上电";
                                                         }else{
                                                             result = "wifi 数据正在发送";
                                                         }

@@ -8,8 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/YilingPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/YilingPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/yiling_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/yiling_plugin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -29,11 +28,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="882QAEUS8YVYK" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+            <state relative-caret-position="5612">
+              <caret line="250" column="68" selection-start-line="250" selection-start-column="68" selection-end-line="250" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -78,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6440">
-              <caret line="285" column="36" selection-start-line="285" selection-start-column="36" selection-end-line="285" selection-end-column="36" />
+            <state relative-caret-position="386">
+              <caret line="85" column="23" lean-forward="true" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -150,8 +149,8 @@
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/model/ka_result.dart" />
         <option value="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" />
-        <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/yiling_plugin.dart" />
+        <option value="$PROJECT_DIR$/example/lib/main.dart" />
       </list>
     </option>
   </component>
@@ -168,6 +167,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,7 +247,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,13 +334,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576571050695</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="final 1.0">
+      <created>1576573368282</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576573368282</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24520256" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24360341" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -351,7 +358,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="1" visible="true" weight="0.4156692" />
+      <window_info anchor="bottom" id="Run" order="1" weight="0.4156692" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
@@ -377,7 +384,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="配网" />
     <MESSAGE value="duka" />
-    <option name="LAST_COMMIT_MESSAGE" value="duka" />
+    <MESSAGE value="final 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.0" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/model/xindian_result.java" />
@@ -409,24 +417,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.806.2679/yiling_plugin.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6550">
-          <caret line="349" column="1" lean-forward="true" selection-start-line="92" selection-end-line="349" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.806.2680/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-644">
-          <caret line="244" column="9" lean-forward="true" selection-end-line="700" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.806.2679/yiling_plugin.dart" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.806.2680/main.dart" />
     <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+        <state relative-caret-position="5612">
+          <caret line="250" column="68" selection-start-line="250" selection-start-column="68" selection-end-line="250" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -462,13 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6440">
-          <caret line="285" column="36" selection-start-line="285" selection-start-column="36" selection-end-line="285" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -487,6 +476,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
           <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="85" column="23" lean-forward="true" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
         </state>
       </provider>
     </entry>
