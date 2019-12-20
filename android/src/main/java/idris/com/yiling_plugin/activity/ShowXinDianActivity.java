@@ -441,15 +441,15 @@ public class ShowXinDianActivity extends AppCompatActivity {
             int[] Output = new int[12];
             short[] isHeartBeat = {0};
 
-            input[0] = event.data1[i];
-            input[1] = event.data2[i];
+            input[0] = event.data1[i]+i;
+            input[1] = event.data2[i]+i;
             input[2] = (input[1] - input[0]);
-            input[3] = event.data11[i];
-            input[4] = event.data12[i];
-            input[5] = event.data13[i];
-            input[6] = event.data14[i];
-            input[7] = event.data15[i];
-            input[8] = event.data16[i];
+            input[3] = event.data11[i]+i;
+            input[4] = event.data12[i]+i;
+            input[5] = event.data13[i]+i;
+            input[6] = event.data14[i]+i;
+            input[7] = event.data15[i]+i;
+            input[8] = event.data16[i]+i;
 //                    Log.d("debug", "input: "+ Arrays.toString(input));
             ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
                     isHeartBeat);

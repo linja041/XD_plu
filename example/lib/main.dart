@@ -522,8 +522,16 @@ class TestState extends State<Test>{
                     ),
                     child: Center(
                       child: GestureDetector(
-                        onTap: xinDian?stopXinDian:startXinDian,
-                        child: xinDian?Text("停止检测"):Text("开始检测（单导展示）"),
+                        onTap: (){goXinDian(
+                            filename:"20191222",
+                            name:"林骏雄",
+                            sex:1,
+                            age:20,
+                            mode:0,
+                            docName:"林医生",
+                            divName:"8848",
+                            ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg");},
+                        child: Text("开始检测"),
                       ),
                     ),
                   ),

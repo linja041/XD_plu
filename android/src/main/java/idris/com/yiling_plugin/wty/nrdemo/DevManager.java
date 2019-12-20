@@ -588,6 +588,8 @@ public class DevManager {
                                                         byte[] xd_w16 = new byte[2];
 
                                                         for (int ii = 0, j = 0; ii < xd_wave.length; j++) {
+                                                            xd_wave[ii] = (byte)0.1;
+
                                                             xd_w[0] = xd_wave[ii + 1];
                                                             xd_w[1] = xd_wave[ii];
 
@@ -637,7 +639,7 @@ public class DevManager {
                                                         } else {
                                                             dataEvent.isNormal = true;
                                                         }
-
+                                                        EventBus.getDefault().post(dataEvent);
                                                         final HashMap<String, Object> map = new HashMap<>();
 
                                                         List list = new ArrayList<>(Arrays.asList(dataEvent.data1));
@@ -664,7 +666,7 @@ public class DevManager {
                                                                 YiLingResponseHandler.startXindian(map);
                                                             }
                                                         });
-                                                        EventBus.getDefault().post(dataEvent);
+
 
                                                     }
 
