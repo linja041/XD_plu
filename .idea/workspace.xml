@@ -7,14 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/libs/armeabi/libnative-lib.so" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/libs/armeabi-v7a/libnative-lib.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/libs/jniLibs/armeabi/libnative-lib.so" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/libs/jniLibs/armeabi-v7a/libnative-lib.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -352,11 +345,19 @@
       <option name="project" value="LOCAL" />
       <updated>1576745153286</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="final 1.02-test">
+      <created>1576824055604</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576824055604</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24200426" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -397,7 +398,8 @@
     <MESSAGE value="final 1.0" />
     <MESSAGE value="final 1.01" />
     <MESSAGE value="final 1.02" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.02" />
+    <MESSAGE value="final 1.02-test" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.02-test" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/model/xindian_result.java" />

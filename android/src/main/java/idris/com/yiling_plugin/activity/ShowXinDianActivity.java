@@ -403,21 +403,17 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void run() {
                 /*tvHr.setText("心率：" + event.hr);
                 tvXY1.setText("电压：" + event.dy/100.0f+"伏");*/
-                if (event.isTuo) {
-                    tvTuo.setText("导联脱落");
-                    mRlTips.setBackgroundColor(Color.parseColor("#FB4C43"));
-                } else {
-//                    tvTuo.setText("导联未脱落");
-                }
 
                 if (event.isTuo) {
                     tvTuo.setText("导联脱落");
                     mRlTips.setBackgroundColor(Color.parseColor("#FB4C43"));
                 } else {
-//                    tvTuo.setText("导联未脱落");
+                    tvTuo.setText("导联未脱落");
+                    mRlTips.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 }
                 if (event.isNormal) {
-//                    tvTuo1.setText("心室大类诊断正常");
+                    tvTuo1.setText("心室大类诊断正常");
+                    mRlTips.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 } else {
                     tvTuo1.setText("心室大类诊断异常");
                     mRlTips.setBackgroundColor(Color.parseColor("#FB4C43"));
