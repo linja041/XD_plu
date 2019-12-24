@@ -33,6 +33,14 @@ public class YiLingResponseHandler {
     }
 
     /**
+     * 认证结果
+     * @param result
+     */
+    public static void autoResult(String result){
+        channel.invokeMethod("autoResult",result);
+    }
+
+    /**
      * 电量
      * @param result
      */

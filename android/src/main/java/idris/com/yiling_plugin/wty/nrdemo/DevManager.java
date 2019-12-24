@@ -285,6 +285,8 @@ public class DevManager {
                                                         //EventBus.getDefault().post(new AuSucc());
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
+                                                        EventBus.getDefault().post(new AuSucc());
+                                                        YiLingResponseHandler.autoResult("蓝牙认证成功");
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd6) {
                                                         Log.e("cunka", "onNotify: " + ByteUtils.toHexString(onePack, " "));
