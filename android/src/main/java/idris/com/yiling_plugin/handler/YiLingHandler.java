@@ -364,7 +364,6 @@ public class YiLingHandler {
         result.success("success");
     }
 
-
     /**
      * 查看与服务器的连接状态
      * @param call
@@ -372,6 +371,17 @@ public class YiLingHandler {
      */
     public static void quesyIpConn(MethodCall call, MethodChannel.Result result) {
         DevManager.getInstance().writeEMS(DevManager.getInstance().quesyIpConn());
+        result.success("success");
+    }
+
+    /**
+     * APP 启动模块 ID 上传
+     * @param call
+     * @param result
+     */
+    public static void startMokuai(MethodCall call, MethodChannel.Result result) {
+        String divMac = call.argument("divMac");
+        DevManager.getInstance().writeEMS(DevManager.getInstance().startMokuai(divMac));
         result.success("success");
     }
 

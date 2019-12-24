@@ -75,6 +75,8 @@ public class YilingPlugin implements MethodCallHandler {
       YiLingHandler.setIp(call,result);
     } else if (call.method.equals("quesyIpConn")) {
       YiLingHandler.quesyIpConn(call,result);
+    } else if (call.method.equals("startMokuai")) {
+        YiLingHandler.startMokuai(call,result);
     } else if (call.method.equals("checkBlePermissionWay")) {
       YiLingHandler.checkBlePermissionWay(call,result);
     } else if (call.method.equals("requestBlePermissionWay")) {

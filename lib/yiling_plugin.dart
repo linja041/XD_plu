@@ -178,6 +178,12 @@ Future<String> quesyIpConn() async {
   return result;
 }
 
+///APP 启动模块 ID 上传
+Future<String> startMokuai() async {
+  String result = await _channel.invokeMethod("startMokuai");
+  return result;
+}
+
 ///检查蓝牙权限
 Future<bool> checkBlePermissionWay() async {
   bool result = await _channel.invokeMethod("checkBlePermissionWay", {});
@@ -295,6 +301,11 @@ StreamController<String> _goLXYSResultController = new StreamController.broadcas
 
 Stream<String> get responseFromGoLXYS => _goLXYSResultController.stream;
 
+///app开启模块上传ID
+StreamController<String> _startMokuaiResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromStartMokuai => _startMokuaiResultController.stream;
+
 Future<dynamic> _handler(MethodCall methodCall) {
   if ("sendScanResult" == methodCall.method) {
     _scanResultController
@@ -343,6 +354,9 @@ Future<dynamic> _handler(MethodCall methodCall) {
         .add(methodCall.arguments);
   }else if ("searchStopped" == methodCall.method) {
     _devStopResultController
+        .add(methodCall.arguments);
+  }else if ("startStatusResult" == methodCall.method) {
+    _startMokuaiResultController
         .add(methodCall.arguments);
   }
   return Future.value(true);

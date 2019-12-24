@@ -89,6 +89,14 @@ public class YiLingResponseHandler {
     }
 
     /**
+     * 启动模块
+     * @param result
+     */
+    public static void startStatusResult(String result){
+        channel.invokeMethod("startStatusResult",result);
+    }
+
+    /**
      * wifi设置密码结果
      * @param result
      */
