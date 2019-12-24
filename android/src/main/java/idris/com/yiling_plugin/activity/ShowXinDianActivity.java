@@ -102,8 +102,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnConnectDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                YiLingResponseHandler.LXYSOrder("gotoLXYS");
+
+                YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
             }
         });
 
@@ -256,6 +256,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                     ecgView.color=Color.parseColor("#eb9591");
+                    finish();
+                    YiLingResponseHandler.SCWJOrder("gotoSCWJ");
                 }
             }
         });

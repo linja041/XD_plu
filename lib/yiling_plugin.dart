@@ -301,6 +301,11 @@ StreamController<String> _goLXYSResultController = new StreamController.broadcas
 
 Stream<String> get responseFromGoLXYS => _goLXYSResultController.stream;
 
+///跳转上传文件
+StreamController<String> _goSCWJResultController = new StreamController.broadcast();
+
+Stream<String> get responseFromGoSCWJ => _goSCWJResultController.stream;
+
 ///app开启模块上传ID
 StreamController<String> _startMokuaiResultController = new StreamController.broadcast();
 
@@ -333,6 +338,9 @@ Future<dynamic> _handler(MethodCall methodCall) {
         .add(kaResult.fromList(methodCall.arguments));
   }else if ("LXYSOrder" == methodCall.method) {
     _goLXYSResultController
+        .add(methodCall.arguments);
+  }else if ("SCWJOrder" == methodCall.method) {
+    _goSCWJResultController
         .add(methodCall.arguments);
   }else if ("wifiSetNameResult" == methodCall.method) {
     _SetWifiNameResultController

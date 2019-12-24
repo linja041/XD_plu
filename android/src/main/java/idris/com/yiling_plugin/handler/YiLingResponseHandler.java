@@ -154,4 +154,13 @@ public class YiLingResponseHandler {
         channel.invokeMethod("LXYSOrder",result);
     }
 
+
+    /**
+     * 跳转上传文件
+     * @param result
+     */
+    public static void SCWJOrder(String result){
+        channel.invokeMethod("SCWJOrder",result);
+    }
+
 }
