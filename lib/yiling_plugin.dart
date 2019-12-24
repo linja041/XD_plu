@@ -331,7 +331,7 @@ Future<dynamic> _handler(MethodCall methodCall) {
   }else if ("sendRTCResult" == methodCall.method) {
     _rtcResultController
         .add(methodCall.arguments.toString());
-  }else if ("startXinDian" == methodCall.method) {
+  }else if ("startXindian" == methodCall.method) {
     _xindianResultController
         .add(XindianResult.formMap(methodCall.arguments));
   }else if ("wifiResult" == methodCall.method) {

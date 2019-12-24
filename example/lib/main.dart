@@ -122,6 +122,12 @@ class TestState extends State<Test>{
       });
     });
 
+    yl.responseFromAuto.listen((data){
+      if(data.toString() == "蓝牙认证成功"){
+
+      }
+    });
+
 //设置WiFi名称监听
     yl.responseFromSetWiFiName.listen((data){
       setState(() {

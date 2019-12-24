@@ -286,6 +286,7 @@ public class DevManager {
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
                                                         EventBus.getDefault().post(new AuSucc());
+                                                        System.out.println("---蓝牙认证成功---");
                                                         YiLingResponseHandler.autoResult("蓝牙认证成功");
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd6) {
