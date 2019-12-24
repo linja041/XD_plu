@@ -179,8 +179,8 @@ Future<String> quesyIpConn() async {
 }
 
 ///APP 启动模块 ID 上传
-Future<String> startMokuai() async {
-  String result = await _channel.invokeMethod("startMokuai");
+Future<String> startMokuai({String mac}) async {
+  String result = await _channel.invokeMethod("startMokuai",{"divMac":mac});
   return result;
 }
 
