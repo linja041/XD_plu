@@ -33,6 +33,14 @@ public class YiLingResponseHandler {
     }
 
     /**
+     * 开始检测
+     * @param result
+     */
+    public static void startJC(String result){
+        channel.invokeMethod("startJC",result);
+    }
+
+    /**
      * 认证结果
      * @param result
      */

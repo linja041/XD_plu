@@ -73,6 +73,10 @@ class TestState extends State<Test>{
       });
     });
 
+    yl.responseFromStartJC.listen((data){
+
+    });
+
     yl.responseFromBt.listen((data){
       print("getBt=====>"+data.toStringAsPrecision(3));
       setState(() {

@@ -161,6 +161,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if ("开始检测".equals(button2.getText().toString())) {
 //                    button1.setVisibility(View.VISIBLE);
+                    YiLingResponseHandler.startJC("开始检测");
                     tv1.setVisibility(View.VISIBLE);
                     tv2.setVisibility(View.VISIBLE);
                     tv3.setVisibility(View.VISIBLE);

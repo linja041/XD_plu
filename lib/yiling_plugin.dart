@@ -315,6 +315,11 @@ StreamController<String> _startMokuaiResultController = new StreamController.bro
 
 Stream<String> get responseFromStartMokuai => _startMokuaiResultController.stream;
 
+///app开启模块上传ID
+StreamController<String> _startJCController = new StreamController.broadcast();
+
+Stream<String> get responseFromStartJC => _startJCController.stream;
+
 Future<dynamic> _handler(MethodCall methodCall) {
   if ("sendScanResult" == methodCall.method) {
     _scanResultController
@@ -372,6 +377,9 @@ Future<dynamic> _handler(MethodCall methodCall) {
         .add(methodCall.arguments);
   }else if ("startStatusResult" == methodCall.method) {
     _startMokuaiResultController
+        .add(methodCall.arguments);
+  }else if ("startJC" == methodCall.method) {
+    _startJCController
         .add(methodCall.arguments);
   }
   return Future.value(true);
