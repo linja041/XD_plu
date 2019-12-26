@@ -4,42 +4,15 @@ import 'dart:async';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter/services.dart';
 import 'package:yiling_plugin/yiling_plugin.dart' as yl;
-import 'package:yiling_plugin_example/main2.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
-  @override
-  Widget build(BuildContext context) {
-    return OKToast(
-        child:MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              title: const Text('Plugin example app'),
-            ),
-            body: Test(),
-          ),
-        )
-    );
-  }
-}
-
-class Test extends StatefulWidget{
+class Test2 extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return TestState();
+    return TestState2();
   }
 
 }
 
-class TestState extends State<Test>{
+class TestState2 extends State<Test2>{
 
   String mac = "";
   String ele = "";
@@ -106,9 +79,6 @@ class TestState extends State<Test>{
     yl.responseFromGoSCWJ.listen((data){
       if(data == "gotoSCWJ"){
         showToast(data);
-        Navigator.push(context, new MaterialPageRoute(builder: (_) {
-          return new Test2();
-        }));
       }
     });
 
@@ -495,7 +465,7 @@ class TestState extends State<Test>{
                                   mode:0,
                                   docName:"林医生",
                                   divName:"8848",
-                                  ava:"");
+                                  ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg");
                             },
                             child: Text("获取电量"),
                           ),

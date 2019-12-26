@@ -102,7 +102,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnConnectDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                 YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
             }
         });
@@ -113,6 +114,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
         btnBackUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                 finish();
             }
         });
@@ -245,25 +248,20 @@ public class ShowXinDianActivity extends AppCompatActivity {
 //                    ecgView.color=Color.parseColor("#09F797");
 //                    p.setColor();
                 } else if("停止检测".equals(button2.getText().toString())){
-//                    button1.setVisibility(View.VISIBLE);
-//                    tv1.setVisibility(View.VISIBLE);
-//                    tv2.setVisibility(View.VISIBLE);
-//                    tv3.setVisibility(View.VISIBLE);
-//                    tv4.setVisibility(View.VISIBLE);
-//                    tv5.setVisibility(View.VISIBLE);
-//                    tv6.setVisibility(View.VISIBLE);
-//                    button2.setText("开始检测");
-////                    button1.setVisibility(View.INVISIBLE);
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+                    button1.setVisibility(View.VISIBLE);
+                    tv1.setVisibility(View.VISIBLE);
+                    tv2.setVisibility(View.VISIBLE);
+                    tv3.setVisibility(View.VISIBLE);
+                    tv4.setVisibility(View.VISIBLE);
+                    tv5.setVisibility(View.VISIBLE);
+                    tv6.setVisibility(View.VISIBLE);
+                    button2.setText("开始检测");
+//                    button1.setVisibility(View.INVISIBLE);
+                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
 //                    ecgView.color=Color.parseColor("#eb9591");
-                    finish();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            YiLingResponseHandler.SCWJOrder("gotoSCWJ");
-                        }
-                    });
+
+                    YiLingResponseHandler.SCWJOrder("gotoSCWJ");finish();
                 }
             }
         });
@@ -623,10 +621,11 @@ public class ShowXinDianActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-        System.out.println("==onDestroy");
+//        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+//        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+
         EventBus.getDefault().unregister(this);
+        System.out.println("==onDestroy");
 //        if (timer != null) {
 //            timer.cancel();
 //        }
