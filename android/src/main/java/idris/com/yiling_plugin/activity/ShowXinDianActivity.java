@@ -246,17 +246,17 @@ public class ShowXinDianActivity extends AppCompatActivity {
 //                    p.setColor();
                 } else if("停止检测".equals(button2.getText().toString())){
 //                    button1.setVisibility(View.VISIBLE);
-                    tv1.setVisibility(View.VISIBLE);
-                    tv2.setVisibility(View.VISIBLE);
-                    tv3.setVisibility(View.VISIBLE);
-                    tv4.setVisibility(View.VISIBLE);
-                    tv5.setVisibility(View.VISIBLE);
-                    tv6.setVisibility(View.VISIBLE);
-                    button2.setText("开始检测");
-//                    button1.setVisibility(View.INVISIBLE);
-                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-                    ecgView.color=Color.parseColor("#eb9591");
+//                    tv1.setVisibility(View.VISIBLE);
+//                    tv2.setVisibility(View.VISIBLE);
+//                    tv3.setVisibility(View.VISIBLE);
+//                    tv4.setVisibility(View.VISIBLE);
+//                    tv5.setVisibility(View.VISIBLE);
+//                    tv6.setVisibility(View.VISIBLE);
+//                    button2.setText("开始检测");
+////                    button1.setVisibility(View.INVISIBLE);
+//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+//                    ecgView.color=Color.parseColor("#eb9591");
                     finish();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -624,6 +624,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+        System.out.println("==onDestroy");
         EventBus.getDefault().unregister(this);
 //        if (timer != null) {
 //            timer.cancel();
