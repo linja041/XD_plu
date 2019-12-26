@@ -258,7 +258,12 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                     ecgView.color=Color.parseColor("#eb9591");
                     finish();
-                    YiLingResponseHandler.SCWJOrder("gotoSCWJ");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            YiLingResponseHandler.SCWJOrder("gotoSCWJ");
+                        }
+                    });
                 }
             }
         });
