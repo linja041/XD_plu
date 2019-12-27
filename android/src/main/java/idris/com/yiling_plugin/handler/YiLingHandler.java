@@ -361,7 +361,7 @@ public class YiLingHandler {
         byte ip4 = (byte) p4;
         short duankou = (short) duan;
         DevManager.getInstance().writeEMS(DevManager.getInstance().setIpPort(ip1,ip2,ip3,ip4,duankou));
-        System.out.println("-------->正在尝试连接服务器：" + p1 + "." + p2 + "." + p3 + "." + p4 + ":" + duan + "<--------");
+//        System.out.println("-------->正在尝试连接服务器：" + p1 + "." + p2 + "." + p3 + "." + p4 + ":" + duan + "<--------");
         result.success("连接中...");
     }
 
