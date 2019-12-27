@@ -73,6 +73,8 @@ public class YilingPlugin implements MethodCallHandler {
       YiLingHandler.wiFiEle(call,result);
     } else if (call.method.equals("setIp")) {
       YiLingHandler.setIp(call,result);
+    } else if (call.method.equals("setIp2")) {
+        YiLingHandler.setIp2(call,result);
     } else if (call.method.equals("quesyIpConn")) {
       YiLingHandler.quesyIpConn(call,result);
     } else if (call.method.equals("startMokuai")) {

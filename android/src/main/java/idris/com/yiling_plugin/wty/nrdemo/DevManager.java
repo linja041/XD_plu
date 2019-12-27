@@ -1065,6 +1065,25 @@ public class DevManager {
         return xinDian_end;
     }
 
+    public byte[] setIpPort2(byte ip1, byte ip2, byte ip3, byte ip4, byte duanL,byte duanH) {
+        byte[] xinDian_end = new byte[13];
+        xinDian_end[0] = (byte) 0xFD;
+        xinDian_end[1] = (byte) 0xa6;
+        xinDian_end[2] = (byte) ip1;
+        xinDian_end[3] = (byte) ip2;
+        xinDian_end[4] = (byte) ip3;
+        xinDian_end[5] = (byte) ip4;
+        xinDian_end[6] = (byte) duanL;
+        xinDian_end[7] = (byte) duanH;
+        xinDian_end[8] = (byte) 0x00;
+        xinDian_end[9] = (byte) 0x00;
+        xinDian_end[10] = (byte) 0x00;
+        xinDian_end[11] = (byte) 0x00;
+        xinDian_end[12] = Crc7Chksum(xinDian_end, 13);
+
+        return xinDian_end;
+    }
+
     public byte[] quesyWifi() {
         byte[] xinDian_end = new byte[4];
         xinDian_end[0] = (byte) 0xFD;

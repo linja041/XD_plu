@@ -366,6 +366,30 @@ public class YiLingHandler {
     }
 
     /**
+     * 配置服务器地址和端口
+     * 需传入 ip字段1-4 和端口号
+     * @param call
+     * @param result
+     */
+    public static void setIp2(MethodCall call, MethodChannel.Result result) {
+        int p1 = Integer.parseInt(call.argument("ip1").toString()) ;
+        int p2 = Integer.parseInt(call.argument("ip2").toString());
+        int p3 = Integer.parseInt(call.argument("ip3").toString());
+        int p4 = Integer.parseInt(call.argument("ip4").toString());
+        short duanL = Short.parseShort(call.argument("duankouL").toString());
+        short duanH = Short.parseShort(call.argument("duankouH").toString());
+        byte ip1 = (byte) p1;
+        byte ip2 = (byte) p2;
+        byte ip3 = (byte) p3;
+        byte ip4 = (byte) p4;
+        byte dkL = (byte) duanL;
+        byte dkH = (byte) duanH;
+        DevManager.getInstance().writeEMS(DevManager.getInstance().setIpPort2(ip1,ip2,ip3,ip4,dkL,dkH));
+        System.out.println("-------->正在尝试连接服务器：" + p1 + "." + p2 + "." + p3 + "." + p4 + ":" + dkL + dkH +"<--------");
+        result.success("连接中...");
+    }
+
+    /**
      * 查看与服务器的连接状态
      * @param call
      * @param result

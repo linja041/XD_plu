@@ -172,6 +172,21 @@ Future setIp({String ip1,String ip2,String ip3,String ip4,String duankou}) async
   return result;
 }
 
+///setIp2
+///设置服务器ip地址&端口
+///需按要求传入四个ip字段+高低端口；
+Future setIp2({String ip1,String ip2,String ip3,String ip4,String duankouL,String duankouH}) async {
+  String result = await _channel.invokeMethod("setIp2",{
+    "ip1" : ip1,
+    "ip2" : ip2,
+    "ip3" : ip3,
+    "ip4" : ip4,
+    "duankouL" : duankouL,
+    "duankouH" : duankouH,
+  });
+  return result;
+}
+
 ///查看与服务器的连接状态
 Future<String> quesyIpConn() async {
   String result = await _channel.invokeMethod("quesyIpConn");
