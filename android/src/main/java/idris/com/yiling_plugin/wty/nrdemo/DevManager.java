@@ -1047,10 +1047,10 @@ public class DevManager {
 
     public byte[] setIpPort(byte ip1, byte ip2, byte ip3, byte ip4, short port) {
         byte[] xinDian_end = new byte[13];
-        int ip = (int)ip1;
-        int ipp = (int)ip2;
-        int ippp = (int)ip3;
-        int ipppp = (int)ip4;
+        int ip = 0xff&ip1;
+        int ipp = 0xff&ip2;
+        int ippp = 0xff&ip3;
+        int ipppp = 0xff&ip4;
         System.out.println("-------->正在尝试连接服务器："+ip+"."+ipp+"."+ippp+"."+ipppp+":"+port+"<--------");
         xinDian_end[0] = (byte) 0xFD;
         xinDian_end[1] = (byte) 0xa6;
