@@ -350,18 +350,19 @@ public class YiLingHandler {
      * @param result
      */
     public static void setIp(MethodCall call, MethodChannel.Result result) {
-        int p1 = (int) call.argument("ip1");
-        int p2 = (int) call.argument("ip2");
-        int p3 = (int) call.argument("ip3");
-        int p4 = (int) call.argument("ip4");
-        int duan = (int) call.argument("duankou");
+        int p1 = Integer.parseInt(call.argument("ip1").toString()) ;
+        int p2 = Integer.parseInt(call.argument("ip2").toString());
+        int p3 = Integer.parseInt(call.argument("ip3").toString());
+        int p4 = Integer.parseInt(call.argument("ip4").toString());
+        short duan = Short.parseShort(call.argument("duankou").toString());
         byte ip1 = (byte) p1;
         byte ip2 = (byte) p2;
         byte ip3 = (byte) p3;
         byte ip4 = (byte) p4;
         short duankou = (short) duan;
         DevManager.getInstance().writeEMS(DevManager.getInstance().setIpPort(ip1,ip2,ip3,ip4,duankou));
-        result.success("success");
+        System.out.println("-------->正在尝试连接服务器：" + p1 + "." + p2 + "." + p3 + "." + p4 + ":" + duan + "<--------");
+        result.success("连接中...");
     }
 
     /**

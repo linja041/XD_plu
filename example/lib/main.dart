@@ -191,7 +191,7 @@ class TestState extends State<Test>{
     }
   }
 
-  Future<bool> checkBle() async{
+  Future<bool> checkBle() async {
     bool result = await yl.checkBlePermissionWay();
     return result;
   }
@@ -348,7 +348,7 @@ class TestState extends State<Test>{
 
   //设置服务器端口
   void setIp(){
-    yl.setIp(ip1: 192,ip2: 168,ip3: 0,ip4: 134,duankou: 80);
+    yl.setIp(ip1: "192",ip2: "168",ip3: "0",ip4: "134",duankou: "80");
   }
 
   //查看与服务器的连接状态

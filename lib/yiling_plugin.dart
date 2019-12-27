@@ -161,7 +161,7 @@ Future wiFiEle() async {
 
 ///设置服务器ip地址&端口
 ///需按要求传入四个ip字段+端口；
-Future setIp({int ip1,int ip2,int ip3,int ip4,int duankou}) async {
+Future setIp({String ip1,String ip2,String ip3,String ip4,String duankou}) async {
   String result = await _channel.invokeMethod("setIp",{
     "ip1" : ip1,
     "ip2" : ip2,
