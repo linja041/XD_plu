@@ -225,6 +225,7 @@ public class DevManager {
         }
 
         ClientManager.getClient().registerConnectStatusListener(mac, mConnectStatusListener);
+
         ClientManager.getClient().connect(mac, new BleConnectResponse() {
             @Override
             public void onResponse(final int code, BleGattProfile profile) {
