@@ -1219,13 +1219,14 @@ public class DevManager {
 
     public void closeDevice(String mac) {
         connState.put(mac, false);
-        Log.d("debug", "closeDevice: " + mac);
+        Log.d("debug", "---------------> 正在断开设备: [" + mac +"] <---------------");
         ClientManager.getClient().unregisterConnectStatusListener(mac, mConnectStatusListener);
         ClientManager.getClient().disconnect(mac);
 
         DeviceConnState deviceConnState = new DeviceConnState();
         deviceConnState.mac = mac;
         deviceConnState.connState = 1;
+        Log.d("debug", "---------------> 断开设备成功 <---------------");
     }
 
     public boolean getConnStateByMac() {

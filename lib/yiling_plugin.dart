@@ -36,6 +36,14 @@ Future setAuto(String mac) async {
   return result;
 }
 
+///断开设备
+Future closeDevice(String mac) async {
+  String result = await _channel.invokeMethod("closeDevice",{
+    "mac" : mac,
+  });
+  return result;
+}
+
 ///获取电量
 Future getBt() async {
   String result = await _channel.invokeMethod("getBt");

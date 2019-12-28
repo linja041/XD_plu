@@ -87,6 +87,17 @@ public class YiLingHandler {
     }
 
     /**
+     * 断开设备
+     * @param call
+     * @param result
+     */
+    public static void closeDevice(MethodCall call, MethodChannel.Result result) {
+        String mac = call.argument("mac");
+        DevManager.getInstance().closeDevice(mac);
+        result.success("closeDevice success");
+    }
+
+    /**
      * 获取电量
      * @param call
      * @param result

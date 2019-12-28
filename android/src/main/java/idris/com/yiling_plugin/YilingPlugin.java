@@ -43,6 +43,8 @@ public class YilingPlugin implements MethodCallHandler {
       YiLingHandler.stopScan(call,result);
     }  else if (call.method.equals("setAuto")) {
       YiLingHandler.setAuto(call,result);
+    }  else if (call.method.equals("closeDevice")) {
+      YiLingHandler.closeDevice(call,result);
     }  else if (call.method.equals("stopScan")) {
       YiLingHandler.startScan(call,result);
     } else if (call.method.equals("getBt")) {
