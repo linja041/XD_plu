@@ -55,7 +55,7 @@ import idris.com.yiling_plugin.wty.nrdemo.util.DataTreater;
 import static com.inuker.bluetooth.library.Constants.STATUS_CONNECTED;
 
 /**
- * Created by Benefm on 2017/6/7 0007.
+ * Upgrade by idris on 2019/12/28
  */
 
 public class DevManager {
@@ -144,7 +144,7 @@ public class DevManager {
 
                 if (mSearchDevices.size() == 0 && device != null && !TextUtils.isEmpty(device.getName()) && device.getName().startsWith("LR")) {//ECG
                     mSearchDevices.add(device);
-                    stopScan();
+//                    stopScan();
                     DeviceScannState deviceScannState = new DeviceScannState();
                     deviceScannState.mac = device.getAddress();
                     bindMac = device.getAddress();
@@ -155,27 +155,7 @@ public class DevManager {
                     map.put("rssi",device.rssi);
                     map.put("name",device.getName());
                     YiLingResponseHandler.sendScanResult(map);
-                    EventBus.getDefault().post(deviceScannState);
-
-                    if (DevManager.getInstance().mSearchDevices != null && DevManager.getInstance().mSearchDevices.size() > 0) {
-                        System.out.println("--------------------->找到设备[" + device.getAddress() + "],正在尝试连接...<---------------------");
-                        DevManager.getInstance().connectDeviceWithReg(device.getAddress());
-
-                        System.out.println("------------------>开始连接认证<------------------");
-                        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                byte[] abt_cmd = new byte[4];
-                                abt_cmd[0] = (byte) 0xFD;
-                                abt_cmd[1] = (byte) 0xF0;
-                                abt_cmd[2] = (byte) 0x00;
-                                abt_cmd[3] = (byte) 0x7E;
-                                DevManager.getInstance().writeEMS(abt_cmd);
-
-                            }
-                        }, 1000);
-                    }
+//                    EventBus.getDefault().post(deviceScannState);
                 }
             }
 
@@ -293,12 +273,15 @@ public class DevManager {
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
                                                         EventBus.getDefault().post(new AuSucc());
                                                         System.out.println("---蓝牙认证成功---");
-                                                        mActivity.runOnUiThread(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                YiLingResponseHandler.autoResult("蓝牙认证成功");
-                                                            }
-                                                        });
+                                                        int status = onePack[2];
+                                                        if(status == 0){
+                                                            mActivity.runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    YiLingResponseHandler.autoResult("蓝牙认证成功");
+                                                                }
+                                                            });
+                                                        }
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd6) {
                                                         Log.e("cunka", "onNotify: " + ByteUtils.toHexString(onePack, " "));

@@ -22,6 +22,20 @@ Future startScan() async {
   return result;
 }
 
+///停止扫描
+Future stopScan() async {
+  String result = await _channel.invokeMethod("stopScan");
+  return result;
+}
+
+///连接设备
+Future setAuto(String mac) async {
+  String result = await _channel.invokeMethod("setAuto",{
+      "mac" : mac,
+  });
+  return result;
+}
+
 ///获取电量
 Future getBt() async {
   String result = await _channel.invokeMethod("getBt");

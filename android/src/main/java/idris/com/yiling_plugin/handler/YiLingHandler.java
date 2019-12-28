@@ -47,9 +47,43 @@ public class YiLingHandler {
         bluetoothHandler = new YiLingHandler();
     }
 
+    /**
+     * 开始扫描
+     * @param call
+     * @param result
+     */
     public static void startScan(MethodCall call, MethodChannel.Result result) {
         DevManager.getInstance().startScan();
         result.success("startScan success");
+    }
+
+    /**
+     * 停止扫描
+     * @param call
+     * @param result
+     */
+    public static void stopScan(MethodCall call, MethodChannel.Result result) {
+        DevManager.getInstance().stopScan();
+        result.success("stopScan success");
+    }
+
+    /**
+     * 连接设备
+     * @param call
+     * @param result
+     */
+    public static void setAuto(MethodCall call, MethodChannel.Result result){
+        String mac = call.argument("mac");
+            System.out.println("--------------------->设备[" + mac + "],正在尝试连接...<---------------------");
+            DevManager.getInstance().connectDeviceWithReg(mac);
+            System.out.println("------------------>开始连接认证<------------------");
+//            DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+            byte[] abt_cmd = new byte[4];
+            abt_cmd[0] = (byte) 0xFD;
+            abt_cmd[1] = (byte) 0xF0;
+            abt_cmd[2] = (byte) 0x00;
+            abt_cmd[3] = (byte) 0x7E;
+            DevManager.getInstance().writeEMS(abt_cmd);
     }
 
     /**
