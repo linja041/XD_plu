@@ -40,13 +40,13 @@ public class YilingPlugin implements MethodCallHandler {
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
     }  else if (call.method.equals("startScan")) {
-      YiLingHandler.stopScan(call,result);
+      YiLingHandler.startScan(call,result);
     }  else if (call.method.equals("setAuto")) {
       YiLingHandler.setAuto(call,result);
     }  else if (call.method.equals("closeDevice")) {
       YiLingHandler.closeDevice(call,result);
     }  else if (call.method.equals("stopScan")) {
-      YiLingHandler.startScan(call,result);
+      YiLingHandler.stopScan(call,result);
     } else if (call.method.equals("getBt")) {
       YiLingHandler.getBt(call,result);
     }  else if (call.method.equals("getTF")) {

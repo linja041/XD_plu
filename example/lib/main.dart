@@ -235,6 +235,13 @@ class TestState extends State<Test>{
     });
   }
 
+  void stopScan(){
+    yl.stopScan().then((result){
+      showToast("startScan");
+      print("startScanResult====>"+result.toString());
+    });
+  }
+
   void getBt(){
     yl.getBt().then((result){
       showToast("getBt");
@@ -487,15 +494,7 @@ class TestState extends State<Test>{
                         child: Center(
                           child: GestureDetector(
                             onTap: (){
-                              goXinDian(
-                                  filename:"20191222",
-                                  name:"林骏雄",
-                                  sex:1,
-                                  age:20,
-                                  mode:0,
-                                  docName:"林医生",
-                                  divName:"8848",
-                                  ava:"");
+                              stopScan();
                             },
                             child: Text("获取电量"),
                           ),
