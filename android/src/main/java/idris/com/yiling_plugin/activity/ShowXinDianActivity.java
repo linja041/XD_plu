@@ -623,7 +623,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         super.onDestroy();
 //        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
 //        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-
+        DevManager.getInstance().close();
         EventBus.getDefault().unregister(this);
         System.out.println("==onDestroy");
 //        if (timer != null) {

@@ -6,9 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -31,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4600">
-              <caret line="267" column="5" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
+              <caret line="274" column="5" selection-start-line="274" selection-start-column="5" selection-end-line="274" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -57,7 +55,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="621">
               <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
             </state>
           </provider>
@@ -399,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577499672484</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="final 1.09+2">
+      <created>1577500020394</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1577500020394</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -431,7 +436,7 @@
       <window_info anchor="bottom" id="Logcat" order="4" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.3297062" />
       <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49946696" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.50067025" side_tool="true" visible="true" weight="0.31161472" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067025" side_tool="true" weight="0.31161472" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.6147309" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.3286119" />
@@ -462,7 +467,8 @@
     <MESSAGE value="final 1.07" />
     <MESSAGE value="final 1.08" />
     <MESSAGE value="final 1.09" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.09" />
+    <MESSAGE value="final 1.09+2" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.09+2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/model/xindian_result.java" />
@@ -491,7 +497,7 @@
     <entry file="file://$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4600">
-          <caret line="267" column="5" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
+          <caret line="274" column="5" selection-start-line="274" selection-start-column="5" selection-end-line="274" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -532,7 +538,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="621">
           <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
         </state>
       </provider>
