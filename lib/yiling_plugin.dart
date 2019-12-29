@@ -262,7 +262,7 @@ StreamController<ScanResult> _scanResultController = new StreamController.broadc
 
 Stream<ScanResult> get responseFromScan => _scanResultController.stream;
 
-///扫描结果
+///认证结果
 StreamController<ScanResult> _autoResultController = new StreamController.broadcast();
 
 Stream<ScanResult> get responseFromAuto => _autoResultController.stream;

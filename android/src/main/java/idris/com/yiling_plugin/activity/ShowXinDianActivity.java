@@ -116,6 +116,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
                 DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+                DevManager.getInstance().close();
                 finish();
             }
         });
@@ -623,7 +624,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         super.onDestroy();
 //        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
 //        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-        DevManager.getInstance().close();
+//        DevManager.getInstance().close();
         EventBus.getDefault().unregister(this);
         System.out.println("==onDestroy");
 //        if (timer != null) {
