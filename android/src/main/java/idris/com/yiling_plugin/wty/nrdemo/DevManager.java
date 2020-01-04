@@ -269,10 +269,9 @@ public class DevManager {
 
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf1) {
                                                         DevManager.getInstance().writeEMS(sendAuthBT(onePack));
-                                                        //EventBus.getDefault().post(new AuSucc());
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
-                                                        EventBus.getDefault().post(new AuSucc());
+//                                                        EventBus.getDefault().post(new AuSucc());
                                                         System.out.println("---蓝牙认证成功---");
                                                         mActivity.runOnUiThread(new Runnable() {
                                                             @Override
@@ -344,7 +343,7 @@ public class DevManager {
                                                         });
                                                         System.out.println("-------------->电量：" + ckSucc.code + "<--------------");
 
-                                                        //EventBus.getDefault().post(ckSucc);
+                                                        EventBus.getDefault().post(ckSucc);
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xc1) {
                                                         Log.e("dianliang", "onNotify: " + ByteUtils.toHexString(onePack, " "));
@@ -436,7 +435,7 @@ public class DevManager {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
                                                         CunkRes1 ckSucc = new CunkRes1();
                                                         ckSucc.state = onePack[2];
-                                                        //EventBus.getDefault().post(ckSucc);
+                                                        EventBus.getDefault().post(ckSucc);
 
                                                     }
 
@@ -444,7 +443,7 @@ public class DevManager {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
                                                         CunkRes ckSucc = new CunkRes();
                                                         ckSucc.state = onePack[2];
-                                                        //EventBus.getDefault().post(ckSucc);
+                                                        EventBus.getDefault().post(ckSucc);
 
                                                     }
 

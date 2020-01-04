@@ -45,6 +45,7 @@ public class YiLingResponseHandler {
      * @param result
      */
     public static void autoResult(String result){
+        System.out.println("--autoResult--");
         channel.invokeMethod("autoResult",result);
     }
 

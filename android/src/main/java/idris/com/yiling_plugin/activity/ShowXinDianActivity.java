@@ -145,12 +145,17 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mTvDivName = findViewById(R.id.tv_div_name);
         mTvDocName = findViewById(R.id.tv_doc_name);
 
+        //基础属性赋值
         Intent i = getIntent();
         docName = i.getStringExtra("docName");
         divName = i.getStringExtra("divName");
         ava = i.getStringExtra("ava");
         mTvDocName.setText("医生:"+docName);
         mTvDivName.setText("设备名称:"+divName);
+        fileName = i.getStringExtra("fileName");
+        name = i.getStringExtra("name");
+        sex = i.getByteExtra("sex",(byte)0);
+        age = i.getByteExtra("age",(byte)18);
 
         mIvAva = findViewById(R.id.iv_ava);
         Glide.with(this)
@@ -171,18 +176,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tv6.setVisibility(View.VISIBLE);
                     button2.setText("停止检测");
 
-
-                    Intent i = getIntent();
-
-                    fileName = i.getStringExtra("fileName");
-                    name = i.getStringExtra("name");
-                    sex = i.getByteExtra("sex",(byte)0);
-                    age = i.getByteExtra("age",(byte)18);
-
                     Log.e("cunka", fileName + ":" + name + ":" + sex + ":" + age);
-//                    FileSave.saveFileNameList(SingleEcgActivity.this, name + "_" +  sex + "_" + age,fileName);
                     byte[] data = DevManager.getInstance().startCK(fileName, name, sex, age, (byte) 0);
-                    Log.e("cunka", ByteUtils.toHexString(data, " "));
                     DevManager.getInstance().writeEMS(data);
 
 
@@ -190,7 +185,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
                     button2.setText("停止检测");
 
-                } else if("停止检测".equals(button2.getText().toString())){
+                }
+                else if("停止检测".equals(button2.getText().toString())){
                     button1.setVisibility(View.VISIBLE);
                     tv1.setVisibility(View.VISIBLE);
                     tv2.setVisibility(View.VISIBLE);
@@ -200,6 +196,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tv6.setVisibility(View.VISIBLE);
                     button2.setText("开始检测");
 //                    button1.setVisibility(View.INVISIBLE);
+
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
 //                    ecgView.color=Color.parseColor("#eb9591");

@@ -226,26 +226,6 @@ class TestState2 extends State<Test2>{
     });
   }
 
-  void startXinDian(){
-    yl.startXinDian().then((result){
-      showToast("startXinDian");
-      print("startXinDian====>"+result.toString());
-      setState(() {
-        xinDian = true;
-      });
-    });
-  }
-
-  void stopXinDian(){
-    yl.stopXinDian().then((result){
-      showToast("stopXinDian");
-      print("stopXinDian====>"+result.toString());
-      setState(() {
-        xinDian = false;
-      });
-    });
-  }
-
   void goXinDian({String filename,String name,int sex,int age,int mode,String docName,String divName,String ava}){
     yl.goXinDian(fileName: filename ,
       name: name ,
@@ -347,19 +327,6 @@ class TestState2 extends State<Test2>{
 
   void duka() {
     yl.duKa().then((value){
-    });
-    showToast("duka");
-  }
-
-  void duKaAndIntent() {
-    yl.duKaAndIntent(position: 1).then((value){
-    });
-    showToast("duka");
-  }
-
-
-  void duKaAndIntent2() {
-    yl.duKaAndIntent2(position: 6).then((value){
     });
     showToast("duka");
   }
@@ -552,21 +519,6 @@ class TestState2 extends State<Test2>{
                             ),
                           ),
                         ),
-                        Container(
-                          width: 150,
-                          height: 45,
-                          margin: EdgeInsets.only(bottom: 5.0),
-                          decoration: new BoxDecoration(
-                            border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                            borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                          ),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap:duKaAndIntent2,
-                              child: Text("读卡"),
-                            ),
-                          ),
-                        ),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -679,20 +631,6 @@ class TestState2 extends State<Test2>{
                           ],
                         ),
 
-                        Container(
-                          height: 45,
-                          margin: EdgeInsets.only(bottom: 5.0,right: 10.0),
-                          decoration: new BoxDecoration(
-                            border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
-                            borderRadius: new BorderRadius.circular((5.0)), // 圆角
-                          ),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: duKaAndIntent,
-                              child: Text("quduka"),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
