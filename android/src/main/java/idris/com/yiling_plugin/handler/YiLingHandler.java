@@ -14,10 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 
-import idris.com.yiling_plugin.activity.EsptouchDemoActivity;
-import idris.com.yiling_plugin.activity.PeiwangActivity;
 import idris.com.yiling_plugin.activity.ShowXinDianActivity;
-import idris.com.yiling_plugin.activity.ViewDKAct;
 import idris.com.yiling_plugin.wty.nrdemo.DevManager;
 import idris.com.yiling_plugin.wty.nrdemo.util.ECGReportAdapter;
 import idris.com.yiling_plugin.wty.nrdemo.util.FileSave;
@@ -194,11 +191,6 @@ public class YiLingHandler {
         //设置配网模式
         DevManager.getInstance().writeEMS(DevManager.getInstance().setWifiMode());
         result.success("success");
-    }
-
-    public static void goPeiwang(MethodCall call ,MethodChannel.Result result){
-        Intent intent=new Intent(registrar.activity(), PeiwangActivity.class);
-        registrar.activity().startActivity(intent);
     }
 
     /**

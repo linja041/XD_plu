@@ -53,16 +53,8 @@ public class YilingPlugin implements MethodCallHandler {
       YiLingHandler.getTF(call,result);
     }  else if (call.method.equals("syncRTC")) {
       YiLingHandler.syncRTC(call,result);
-    } else if (call.method.equals("startXinDian")) {
-      YiLingHandler.startXinDian(call,result);
     } else if (call.method.equals("goXinDian")) {
       YiLingHandler.goXinDian(call,result);
-    } else if (call.method.equals("stopXinDian")) {
-      YiLingHandler.stopXinDian(call,result);
-    } else if (call.method.equals("startCunKa")) {
-      YiLingHandler.startCunKa(call,result);
-    } else if (call.method.equals("stopCunKa")) {
-      YiLingHandler.stopCunKa(call,result);
     } else if (call.method.equals("startWiFi")) {
       YiLingHandler.startWiFi(call,result);
     } else if (call.method.equals("stopWiFi")) {
@@ -99,10 +91,6 @@ public class YilingPlugin implements MethodCallHandler {
       YiLingHandler.requestReadPermissionWay(call,result);
     } else if (call.method.equals("duKa")) {
       YiLingHandler.duKa(call,result);
-    } else if (call.method.equals("duKaAndIntent")) {
-      YiLingHandler.duKaAndIntent(call,result);
-    } else if (call.method.equals("duKaAndIntent2")) {
-      YiLingHandler.duKaAndIntent2(call,result);
     } else {
       result.notImplemented();
     }
