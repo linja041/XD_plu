@@ -229,9 +229,9 @@ StreamController<ScanResult> _scanResultController = new StreamController.broadc
 Stream<ScanResult> get responseFromScan => _scanResultController.stream;
 
 ///认证结果
-StreamController<ScanResult> _autoResultController = new StreamController.broadcast();
+StreamController<String> _autoResultController = new StreamController.broadcast();
 
-Stream<ScanResult> get responseFromAuto => _autoResultController.stream;
+Stream<String> get responseFromAuto => _autoResultController.stream;
 
 ///设备断开
 StreamController<String> _devStopResultController = new StreamController.broadcast();
