@@ -273,24 +273,13 @@ public class DevManager {
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xf3) {
                                                         EventBus.getDefault().post(new AuSucc());
-                                                        int status = onePack[2];
-                                                        if(status == 0){
-                                                            System.out.println("---蓝牙认证成功---");
-                                                            mActivity.runOnUiThread(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    YiLingResponseHandler.autoResult("蓝牙认证成功");
-                                                                }
-                                                            });
-                                                        }else{
-                                                            System.out.println("---蓝牙认证失败---");
-                                                            mActivity.runOnUiThread(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    YiLingResponseHandler.autoResult("蓝牙认证失败");
-                                                                }
-                                                            });
-                                                        }
+                                                        System.out.println("---蓝牙认证成功---");
+                                                        mActivity.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                YiLingResponseHandler.autoResult("蓝牙认证成功");
+                                                            }
+                                                        });
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd6) {
                                                         Log.e("cunka", "onNotify: " + ByteUtils.toHexString(onePack, " "));
