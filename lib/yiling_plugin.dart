@@ -62,12 +62,6 @@ Future syncRTC() async {
   return result;
 }
 
-///单导展示，开始检测
-Future startXinDian() async {
-  String result = await _channel.invokeMethod("startXinDian");
-  return result;
-}
-
 ///展示
 Future goXinDian({String fileName,String name,int sex,int age,int mode,String docName,String divName,String ava}) async {
   String result = await _channel.invokeMethod("goXinDian",{
@@ -80,12 +74,6 @@ Future goXinDian({String fileName,String name,int sex,int age,int mode,String do
     "divName" : divName,
     "ava" : ava,
   });
-  return result;
-}
-
-///单导展示，停止检测
-Future stopXinDian() async {
-  String result = await _channel.invokeMethod("stopXinDian");
   return result;
 }
 
@@ -128,28 +116,6 @@ Future duKa() async {
 ///启动配网模式
 Future startPeiwang() async {
   String result = await _channel.invokeMethod("startPeiwang");
-  return result;
-}
-
-///去配网
-Future goPeiwang() async {
-  String result = await _channel.invokeMethod("goPeiwang");
-  return result;
-}
-
-///去读卡
-Future duKaAndIntent({int position}) async {
-  String result = await _channel.invokeMethod("duKaAndIntent",{
-    "position" : position,
-  });
-  return result;
-}
-
-///去读卡
-Future duKaAndIntent2({int position}) async {
-  String result = await _channel.invokeMethod("duKaAndIntent2",{
-    "position" : position,
-  });
   return result;
 }
 

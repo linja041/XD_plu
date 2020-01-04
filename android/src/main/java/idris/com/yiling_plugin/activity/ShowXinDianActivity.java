@@ -102,8 +102,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnConnectDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+                DevManager.getInstance().close();
                 YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
             }
         });
@@ -114,8 +113,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
         btnBackUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                 DevManager.getInstance().close();
                 finish();
             }
@@ -164,7 +161,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ("开始检测".equals(button2.getText().toString())) {
-//                    button1.setVisibility(View.VISIBLE);
+                    DevManager.getInstance().writeEMS(DevManager.getInstance().startXinDian());
                     YiLingResponseHandler.startJC("开始检测");
                     tv1.setVisibility(View.VISIBLE);
                     tv2.setVisibility(View.VISIBLE);
@@ -188,66 +185,11 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     Log.e("cunka", ByteUtils.toHexString(data, " "));
                     DevManager.getInstance().writeEMS(data);
 
-                    DevManager.getInstance().writeEMS(DevManager.getInstance().startXinDian());
 
-//
-//                    p.setColor(Color.parseColor("#b3f442"));
                     ecgView.color= Color.parseColor("#eb9591");
-//                    button.setEnabled(false);
 
                     button2.setText("停止检测");
-//
-//                    button2.setText("开始");
-////                                        button.setEnabled(true);
-//                    button1.setVisibility(View.INVISIBLE);
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-//                    ecgView.color=Color.parseColor("#09F797");
 
-//                    if (timer != null) {
-//                        timer.cancel();
-//                    }
-//                    timer = new Timer();
-//                    count = 10;
-//                    timer.schedule(new TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//
-//                                    count--;
-//                                    button2.setText("停止(" + count + ")");
-//                                    if (count == 0) {
-//
-//                                        button2.setText("开始");
-////                                        button.setEnabled(true);
-//                                        button1.setVisibility(View.INVISIBLE);
-//                                        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-//                                        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-//                                        ecgView.color=Color.parseColor("#09F797");
-//                                        timer.cancel();
-//                                    }
-//
-//                                }
-//                            });
-//
-//
-//                        }
-//                    }, 1000, 1000);
-//
-//                } else {
-//                    if (timer != null) {
-//                        timer.cancel();
-//                    }
-
-//                    button2.setText("开始");
-////                    button.setEnabled(true);
-//                    button1.setVisibility(View.INVISIBLE);
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-//                    DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-//                    ecgView.color=Color.parseColor("#09F797");
-//                    p.setColor();
                 } else if("停止检测".equals(button2.getText().toString())){
                     button1.setVisibility(View.VISIBLE);
                     tv1.setVisibility(View.VISIBLE);
@@ -334,7 +276,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
         ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
 
-        DevManager.getInstance().writeEMS(DevManager.getInstance().getCunKState());
+//        DevManager.getInstance().writeEMS(DevManager.getInstance().getCunKState());
 
 
     }
@@ -622,13 +564,10 @@ public class ShowXinDianActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-//        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
 //        DevManager.getInstance().close();
         EventBus.getDefault().unregister(this);
         System.out.println("==onDestroy");
-//        if (timer != null) {
-//            timer.cancel();
-//        }
     }
 }

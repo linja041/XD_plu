@@ -135,16 +135,6 @@ public class YiLingHandler {
     }
 
     /**
-     * 开始检测
-     * @param call
-     * @param result
-     */
-    public static void startXinDian(MethodCall call, MethodChannel.Result result) {
-        DevManager.getInstance().writeEMS(DevManager.getInstance().startXinDian());
-        result.success("success");
-    }
-
-    /**
      * 开始检测（去Android显示）
      * @param call
      * @param result
@@ -156,82 +146,29 @@ public class YiLingHandler {
             docName = call.argument("docName");
             divName = call.argument("divName");
             ava = call.argument("ava");
-            if(fileName == null){
+            if (fileName == null) {
                 fileName = UUID8.generateShortUuid1();
             }
-            if(name == null){
+            if (name == null) {
                 name = UUID8.getAccountIdByUUId();
             }
             int s = (int) call.argument("sex");
             int a = (int) call.argument("age");
             int m = (int) call.argument("mode");
             sex = (byte) s;
-            age  = (byte) a;
+            age = (byte) a;
             mode = (byte) m;
         }
         Intent intent = new Intent(registrar.activity(), ShowXinDianActivity.class);
-        intent.putExtra("fileName",fileName);
-        intent.putExtra("docName",docName);
-        intent.putExtra("divName",divName);
-        intent.putExtra("ava",ava);
-        intent.putExtra("name",name);
-        intent.putExtra("sex",sex);
-        intent.putExtra("age",age);
-        intent.putExtra("mode",mode);
+        intent.putExtra("fileName", fileName);
+        intent.putExtra("docName", docName);
+        intent.putExtra("divName", divName);
+        intent.putExtra("ava", ava);
+        intent.putExtra("name", name);
+        intent.putExtra("sex", sex);
+        intent.putExtra("age", age);
+        intent.putExtra("mode", mode);
         registrar.activity().startActivity(intent);
-        result.success("success");
-    }
-
-    /**
-     * 停止检测
-     * @param call
-     * @param result
-     */
-    public static void stopXinDian(MethodCall call, MethodChannel.Result result) {
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-        result.success("getBt stopXinDian");
-    }
-
-    /**
-     * 存卡 需要传入性别年龄姓名文件名mode
-     * name : 姓名长度小于16，默认系统随机
-     * fileName : 文件名长度小于8，默认系统随机
-     * sex : 1 男 : 0 女 不传默认0
-     * age : 年龄 不传默认18
-     * mode : 0 250hz16bit : 1 125hz16bit : 2 250hz8bit : 3 123hz8bit 建议传0
-     */
-    public static void startCunKa(MethodCall call, MethodChannel.Result result) {
-        if (call != null) {
-            fileName = call.argument("fileName");
-            name = call.argument("name");
-            if(fileName == null){
-                fileName = UUID8.generateShortUuid1();
-            }
-            if(name == null){
-                name = UUID8.getAccountIdByUUId();
-            }
-            int s = (int) call.argument("sex");
-            int a = (int) call.argument("age");
-            int m = (int) call.argument("mode");
-            sex = (byte) s;
-            age  = (byte) a;
-            mode = (byte) m;
-            System.out.print("-------------------->存卡信息：fileName = " + fileName + " name = " + name + " sex = " + sex + " age = " + age + " mode: " + mode+"<--------------------");
-            byte[] data = DevManager.getInstance().startCK(fileName, name, sex, age, (byte) 0);
-            DevManager.getInstance().writeEMS(data);
-
-            FileSave.saveFileNameList(registrar.context(),  name + "_" +sex + "_" + age, fileName);
-            result.success("success");
-        }
-    }
-
-    /**
-     * 停止存卡
-     * @param call
-     * @param result
-     */
-    public static void stopCunKa(MethodCall call, MethodChannel.Result result){
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
         result.success("success");
     }
 
@@ -295,54 +232,6 @@ public class YiLingHandler {
         System.out.println("-------------------->读卡信息 :" + daa + "<--------------------");
 
         YiLingResponseHandler.kaResult(beans);
-    }
-
-    /**
-     * 读并跳转
-     * @param call
-     * @param result
-     */
-    public static void duKaAndIntent(MethodCall call, MethodChannel.Result result){
-        final String[] daa = FileSave.getFileNameList(registrar.context());
-        List<String> beans = new ArrayList<>();
-        if (daa != null) {
-            List<String> tem = Arrays.asList(daa);
-//            beans =  new ArrayList<String> (daa);
-            System.out.print(tem.get(0));
-            for(int i = 0; i < tem.size() ; i++){
-                beans.add(tem.get(i));
-            }
-            System.out.print(beans.toString());
-            ECGReportAdapter reportAdapter = new ECGReportAdapter(registrar.context(), beans);
-        }
-        int position = call.argument("position");
-        Intent intent = new Intent(registrar.activity(), ViewDKAct.class);
-        intent.putExtra("data", beans.get(position));
-        registrar.activity().startActivity(intent);
-    }
-
-    /**
-     * 读并跳转
-     * @param call
-     * @param result
-     */
-    public static void duKaAndIntent2(MethodCall call, MethodChannel.Result result){
-        int position = call.argument("position");
-        final String[] daa = FileSave.getFileNameList(registrar.context());
-        List<String> beans = new ArrayList<>();
-        if (daa != null) {
-            List<String> tem = Arrays.asList(daa);
-//            beans =  new ArrayList<String> (daa);
-            System.out.print(tem.get(0));
-            for(int i = 0; i < tem.size() ; i++){
-                beans.add(tem.get(i));
-            }
-            System.out.print(beans.toString());
-            ECGReportAdapter reportAdapter = new ECGReportAdapter(registrar.context(), beans);
-        }
-        Intent intent = new Intent(registrar.activity(), EsptouchDemoActivity.class);
-        intent.putExtra("data", beans.get(position));
-        registrar.activity().startActivity(intent);
     }
 
     /**
