@@ -225,17 +225,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     data4.clear();
                     data5.clear();
 
-                        /*x = 0;
-                        x1 = 0;
-                        x2 = 0;
-                        x3 = 0;
-                        x4 = 0;
-                        x5 = 0;
-                        Canvas canvas = holder.lockCanvas();
-                        canvas.drawColor(Color.WHITE);
-                        height = canvas.getHeight();
-                        holder.unlockCanvasAndPost(canvas);*/
-
 
                 } else {
 
@@ -251,16 +240,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     data3.clear();
                     data4.clear();
                     data5.clear();
-                       /* x = 0;
-                        x1 = 0;
-                        x2 = 0;
-                        x3 = 0;
-                        x4 = 0;
-                        x5 = 0;
-                        Canvas canvas = holder.lockCanvas();
-                        canvas.drawColor(Color.WHITE);
-                        height = canvas.getHeight();
-                        holder.unlockCanvasAndPost(canvas);*/
                 }
             }
 
@@ -272,8 +251,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
 
         ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
-
-//        DevManager.getInstance().writeEMS(DevManager.getInstance().getCunKState());
 
 
     }
@@ -366,13 +343,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 }
                 tvHr.setText("心率："+event.hr+"");
 
-                /*if (event.isCharging == 0) {
-                    tvTuo1.setText("未插入适配器未充电");
-                } else if (event.isCharging == 1) {
-                    tvTuo1.setText("充电中");
-                } else {
-                    tvTuo1.setText("充电完成");
-                }*/
 
             }
         });
@@ -445,79 +415,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 data4.clear();
                 data5.clear();
 
-                       /* long st = System.currentTimeMillis();
-                        Rect rect = new Rect((int) x, 0, (int) (x + 9), height);
-                        Canvas ca = holder.lockCanvas(rect);
-                        if (ca != null) {
-                            ca.drawColor(Color.WHITE);
-                            for (int ii = 0; ii < data.size() - 1; ii++) {
-                                ca.drawLine(x, height / 12 - data.get(ii) * 0.025f, (x + 1), height / 12 - data.get(ii + 1) * 0.025f, p);
-                                ca.drawLine(x1, height / 4 - data1.get(ii) * 0.025f, (x1 + 1), height / 4 - data1.get(ii + 1) * 0.025f, p);
-                                ca.drawLine(x2, height / 12 * 5 - data2.get(ii) * 0.025f, (x2 + 1), height / 12 * 5 - data2.get(ii + 1) * 0.025f, p);
-                                ca.drawLine(x3, height / 12 * 7 - data3.get(ii) * 0.025f, (x3 + 1), height / 12 * 7 - data3.get(ii + 1) * 0.025f, p);
-                                ca.drawLine(x4, height / 4 * 3 - data4.get(ii) * 0.025f, (x4 + 1), height / 4 * 3 - data4.get(ii + 1) * 0.025f, p);
-                                ca.drawLine(x5, height / 12 * 11 - data5.get(ii) * 0.025f, (x5 + 1), height / 12 * 11 - data5.get(ii + 1) * 0.025f, p);
-                                x += 1;
-                                x1 += 1;
-                                x2 += 1;
-                                x3 += 1;
-                                x4 += 1;
-                                x5 += 1;
-
-                            }
-
-                            int tmep = data.get(1);
-                            data.clear();
-                            data.add(tmep);
-
-                            int tmep1 = data1.get(1);
-                            data1.clear();
-                            data1.add(tmep1);
-
-                            int tmep2 = data2.get(1);
-                            data2.clear();
-                            data2.add(tmep2);
-                            int tmep3 = data3.get(1);
-                            data3.clear();
-                            data3.add(tmep3);
-                            int tmep4 = data4.get(1);
-                            data4.clear();
-                            data4.add(tmep4);
-
-                            int tmep5 = data5.get(1);
-                            data5.clear();
-                            data5.add(tmep5);
-
-                            holder.unlockCanvasAndPost(ca);
-                            if (x > width) {
-                                x = 0;
-                            }
-                            if (x1 > width) {
-                                x1 = 0;
-                            }
-                            if (x2 > width) {
-                                x2 = 0;
-                            }
-                            if (x3 > width) {
-                                x3 = 0;
-                            }
-                            if (x4 > width) {
-                                x4 = 0;
-                            }
-                            if (x5 > width) {
-                                x5 = 0;
-                            }
-
-                        }
-                        long end = System.currentTimeMillis();*/
-
-
-
             }
-
-
-//                }
-//            }
         }
     }
 
@@ -548,22 +446,13 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onCunkRes(CunkRes event) {
-
-        if(event.state==1){
-            button2.setText("停止检测");
-        }else{
-            button2.setText("开始检测");
-        }
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
         DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-//        DevManager.getInstance().close();
+        ecgView.clearData();
+        ecgView.clearWave();
         EventBus.getDefault().unregister(this);
         System.out.println("==onDestroy");
     }

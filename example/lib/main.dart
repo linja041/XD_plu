@@ -63,15 +63,10 @@ class TestState extends State<Test>{
     yl.responseFromScan.listen((data){
       print("responseFromScan=====>"+data.address);
       setState(() {
-        mac = data.name;
+        mac = data.address;
       });
-    });
-
-    yl.responseFromDevStop.listen((data){
-//      print("responseFromScan=====>"+data.address);
-      setState(() {
-        mac = data;
-      });
+      yl.stopScan();
+      yl.setAuto(mac);
     });
 
     yl.responseFromStartJC.listen((data){
@@ -106,9 +101,9 @@ class TestState extends State<Test>{
     yl.responseFromGoSCWJ.listen((data){
       if(data == "gotoSCWJ"){
         showToast(data);
-        Navigator.push(context, new MaterialPageRoute(builder: (_) {
-          return new Test2();
-        }));
+//        Navigator.push(context, new MaterialPageRoute(builder: (_) {
+//          return new Test2();
+//        }));
       }
     });
 
@@ -134,12 +129,6 @@ class TestState extends State<Test>{
       setState(() {
         ka = data.ka;
       });
-    });
-
-    yl.responseFromAuto.listen((data){
-      if(data.toString() == "蓝牙认证成功"){
-
-      }
     });
 
 //设置WiFi名称监听
@@ -232,6 +221,9 @@ class TestState extends State<Test>{
     yl.startScan().then((result){
       showToast("startScan");
       print("startScanResult====>"+result.toString());
+      setState(() {
+        mac = "正在搜索设备...";
+      });
     });
   }
 
