@@ -40,6 +40,7 @@ import idris.com.yiling_plugin.wty.nrdemo.model.CunkRes;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataAynResult;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataEvent;
 import idris.com.yiling_plugin.wty.nrdemo.model.DeviceConnState;
+import idris.com.yiling_plugin.wty.nrdemo.model.Dianliang;
 import idris.com.yiling_plugin.wty.nrdemo.util.ByteUtils;
 import idris.com.yiling_plugin.wty.nrdemo.util.FileSave;
 
@@ -167,6 +168,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if ("开始检测".equals(button2.getText().toString())) {
                     DevManager.getInstance().writeEMS(DevManager.getInstance().startXinDian());
+                    DevManager.getInstance().writeEMS(DevManager.getInstance().getBt());
                     YiLingResponseHandler.startJC("开始检测");
                     tv1.setVisibility(View.VISIBLE);
                     tv2.setVisibility(View.VISIBLE);
@@ -317,6 +319,16 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
             finish();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onBTEvent(final Dianliang event) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("获取电量---------->"+event.code);
+            }
+        });
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
