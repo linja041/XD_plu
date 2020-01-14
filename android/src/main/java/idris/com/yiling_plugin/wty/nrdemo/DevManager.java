@@ -80,6 +80,7 @@ public class DevManager {
                 } else {
                     connState.put(mac1, false);
                     deviceConnState.connState = 1;
+                    System.out.println("---------------------设备断开");
                 }
                 EventBus.getDefault().post(deviceConnState);
             }

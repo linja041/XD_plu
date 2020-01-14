@@ -88,11 +88,11 @@ public class ShowXinDianActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_xin_dian);
-
-        SetTranslanteBar();
         EventBus.getDefault().register(this);
+
         ndkLibTool = new ecglib();
 
+        SetTranslanteBar();
         mBtnConnectDoc = findViewById(R.id.btn_connect_doc);
         Drawable drawable= null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -103,6 +103,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnConnectDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
                 DevManager.getInstance().close();
                 YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
             }
@@ -114,7 +116,9 @@ public class ShowXinDianActivity extends AppCompatActivity {
         btnBackUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DevManager.getInstance().close();
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
+                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
+                DevManager.getInstance().closeDevice(divMac);
                 finish();
             }
         });
@@ -157,6 +161,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         name = i.getStringExtra("name");
         sex = i.getByteExtra("sex",(byte)0);
         age = i.getByteExtra("age",(byte)18);
+        divMac = i.getStringExtra("divMac");
 
         mIvAva = findViewById(R.id.iv_ava);
         Glide.with(this)
@@ -262,6 +267,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
     String docName;
     String divName;
     String ava;
+    String divMac;
 
     byte sex;
     byte age;
@@ -461,8 +467,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-        DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
         ecgView.clearData();
         ecgView.clearWave();
         EventBus.getDefault().unregister(this);

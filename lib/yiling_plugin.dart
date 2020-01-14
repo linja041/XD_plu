@@ -63,7 +63,15 @@ Future syncRTC() async {
 }
 
 ///展示
-Future goXinDian({String fileName,String name,int sex,int age,int mode,String docName,String divName,String ava}) async {
+Future goXinDian({String fileName,
+  String name,
+  int sex,
+  int age,
+  int mode,
+  String docName,
+  String divName,
+  String ava,
+  String divMac}) async {
   String result = await _channel.invokeMethod("goXinDian",{
     "fileName" : fileName,
     "name" : name,
@@ -73,6 +81,7 @@ Future goXinDian({String fileName,String name,int sex,int age,int mode,String do
     "docName" : docName,
     "divName" : divName,
     "ava" : ava,
+    "divMac" : divMac,
   });
   return result;
 }

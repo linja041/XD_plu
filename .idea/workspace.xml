@@ -6,11 +6,14 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="final 1.10+5">
+    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/android/app/libs/armeabi-v7a/libflutter.so" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/libs/armeabi-v7a/libflutter.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/yiling_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/yiling_plugin.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -33,12 +36,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="389" column="7" selection-start-line="389" selection-start-column="7" selection-end-line="389" selection-end-column="7" />
+            <state relative-caret-position="-476">
+              <caret line="475" column="24" selection-start-line="475" selection-start-column="24" selection-end-line="475" selection-end-column="24" />
               <folding>
-                <element signature="e#8104#20557#0" />
-                <element signature="e#11629#12296#0" />
-                <element signature="e#12319#13013#0" />
+                <element signature="e#20647#21225#0" />
               </folding>
             </state>
           </provider>
@@ -47,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="243">
+              <caret line="73" column="2" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -75,9 +76,11 @@
       <find>setIp</find>
       <find>startsc</find>
       <find>autoResult</find>
-      <find>goXinDian</find>
       <find>checkVersion</find>
       <find>mac</find>
+      <find>断开设备成功</find>
+      <find>xindian</find>
+      <find>goXinDian</find>
     </findStrings>
     <replaceStrings>
       <replace>(</replace>
@@ -99,8 +102,8 @@
         <option value="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" />
         <option value="$PROJECT_DIR$/example/lib/main2.dart" />
         <option value="$PROJECT_DIR$/test/yiling_plugin_test.dart" />
-        <option value="$PROJECT_DIR$/lib/yiling_plugin.dart" />
         <option value="E:/腾讯/QQ/date/1002097058/FileRecv/launchPage.dart" />
+        <option value="$PROJECT_DIR$/lib/yiling_plugin.dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
       </list>
     </option>
@@ -117,7 +120,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -125,6 +127,11 @@
             <path>
               <item name="xd_pug" type="b2602c69:ProjectViewProjectNode" />
               <item name="xd_pug" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xd_pug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xd_pug" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xd_pug" type="b2602c69:ProjectViewProjectNode" />
@@ -151,13 +158,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/腾讯/QQ/date/1002097058/FileRecv/MyNrDemo_12_20190708/MyNrDemo_12" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -451,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578284972913</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="final 1.10+5">
+      <created>1578547097415</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1578547097416</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView">
@@ -466,7 +481,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29758713" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30965146" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -476,12 +491,12 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49865952" weight="0.3101983" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49865952" weight="0.8441926" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.3297062" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.49865952" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49865952" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5013405" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.6147309" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49731904" weight="0.3281471" />
@@ -601,22 +616,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+    <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
-          <caret line="389" column="7" selection-start-line="389" selection-start-column="7" selection-end-line="389" selection-end-column="7" />
-          <folding>
-            <element signature="e#8104#20557#0" />
-            <element signature="e#11629#12296#0" />
-            <element signature="e#12319#13013#0" />
-          </folding>
+          <caret line="73" column="2" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="-476">
+          <caret line="475" column="24" selection-start-line="475" selection-start-column="24" selection-end-line="475" selection-end-column="24" />
+          <folding>
+            <element signature="e#20647#21225#0" />
+          </folding>
         </state>
       </provider>
     </entry>

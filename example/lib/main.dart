@@ -256,7 +256,17 @@ class TestState extends State<Test>{
     });
   }
 
-  void goXinDian({String filename,String name,int sex,int age,int mode,String docName,String divName,String ava}){
+  void goXinDian(
+      {String filename,
+        String name,
+        int sex,
+        int age,
+        int mode,
+        String docName,
+        String divName,
+        String ava,
+        String divMac}
+        ){
     yl.goXinDian(fileName: filename ,
       name: name ,
       sex: sex ,
@@ -265,6 +275,7 @@ class TestState extends State<Test>{
       docName: docName ,
       divName: divName,
       ava: ava,
+      divMac :divMac,
     ).then((result){
     });
   }
@@ -366,6 +377,11 @@ class TestState extends State<Test>{
     yl.quesyIpConn();
   }
 
+  //查看与服务器的连接状态
+  void removeDiv (){
+    yl.closeDevice(mac);
+  }
+
   void stopCunka(){
     yl.stopCunKa().then((result){
       setState(() {
@@ -455,7 +471,9 @@ class TestState extends State<Test>{
                         mode:0,
                         docName:"林医生",
                         divName:"8848",
-                        ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg");},
+                        ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg",
+                        divMac: mac
+                    );},
                     child: Text("开始检测"),
                   ),
                 ),
@@ -729,6 +747,21 @@ class TestState extends State<Test>{
                   child: GestureDetector(
                     onTap: quesyIpConn,
                     child: Text("connIpStatus"),
+                  ),
+                ),
+              ),
+              Container(
+                height: 40,
+                width: 100,
+                margin: EdgeInsets.only(bottom: 5.0,right: 10.0,top: 5.0),
+                decoration: new BoxDecoration(
+                  border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                  borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: removeDiv,
+                    child: Text("移除设备"),
                   ),
                 ),
               ),

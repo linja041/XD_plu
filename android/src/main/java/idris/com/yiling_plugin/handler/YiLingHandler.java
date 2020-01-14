@@ -30,6 +30,7 @@ public class YiLingHandler {
     static String docName;
     static String divName;
     static String ava;
+    static String divMac;
     static byte sex;
     static byte age;
     static byte mode;
@@ -97,6 +98,7 @@ public class YiLingHandler {
      */
     public static void closeDevice(MethodCall call, MethodChannel.Result result) {
         String mac = call.argument("mac");
+        System.out.println("closeDevicecloseDevicecloseDevice~~~~~~~~~");
         DevManager.getInstance().closeDevice(mac);
         result.success("closeDevice success");
     }
@@ -155,6 +157,7 @@ public class YiLingHandler {
             sex = (byte) s;
             age = (byte) a;
             mode = (byte) m;
+            divMac = call.argument("divMac");
         }
         Intent intent = new Intent(registrar.activity(), ShowXinDianActivity.class);
         intent.putExtra("fileName", fileName);
@@ -165,6 +168,7 @@ public class YiLingHandler {
         intent.putExtra("sex", sex);
         intent.putExtra("age", age);
         intent.putExtra("mode", mode);
+        intent.putExtra("divMac",divMac);
         registrar.activity().startActivity(intent);
         result.success("success");
     }
