@@ -73,6 +73,11 @@ class TestState extends State<Test>{
       yl.setAuto(mac);
     });
 
+    yl.responseFromDevStop.listen((data){
+      showToast("设备断开");
+      mac = "设备断开";
+    });
+
     yl.responseFromStartJC.listen((data){
 
     });
@@ -172,6 +177,7 @@ class TestState extends State<Test>{
     yl.responseFromConnIpStatus.listen((data){
       print("ConnIpStatusResult===========" + data.toString());
     });
+
   }
 
   Future<void> initBluetooth() async {

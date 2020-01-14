@@ -1223,7 +1223,13 @@ public class DevManager {
 
         DeviceConnState deviceConnState = new DeviceConnState();
         deviceConnState.mac = mac;
-        deviceConnState.connState = 1;
+        deviceConnState.connState = 1;mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String result = "设备断开";
+                YiLingResponseHandler.searchStopped(result);
+            }
+        });
         Log.d("debug", "---------------> 断开设备成功 <---------------");
     }
 
