@@ -60,6 +60,10 @@ class TestState extends State<Test>{
     initBluetooth();
 //    initWrite();
 //    initRead();
+    yl.responseFromAuto.listen((data){
+      showToast(data.toString());
+    });
+
     yl.responseFromScan.listen((data){
       print("responseFromScan=====>"+data.address);
       setState(() {
@@ -218,13 +222,29 @@ class TestState extends State<Test>{
     return result;
   }
 
+  int canTap = 0;
   void startScan(){
-    yl.startScan().then((result){
-      showToast("startScan");
-      print("startScanResult====>"+result.toString());
-      setState(() {
-        mac = "正在搜索设备...";
+    if(canTap != 0){
+      yl.closeDevice(mac);
+
+      yl.startScan().then((result){
+        showToast("startScan");
+        print("startScanResult====>"+result.toString());
+        setState(() {
+          mac = "正在搜索设备...";
+        });
       });
+    }else{
+      yl.startScan().then((result){
+        showToast("startScan");
+        print("startScanResult====>"+result.toString());
+        setState(() {
+          mac = "正在搜索设备...";
+        });
+      });
+    }
+    setState(() {
+      canTap++;
     });
   }
 
