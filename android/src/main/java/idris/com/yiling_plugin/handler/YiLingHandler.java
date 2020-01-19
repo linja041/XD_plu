@@ -337,13 +337,24 @@ public class YiLingHandler {
     }
 
     /**
-     * APP 启动模块 ID 上传
+     * APP 启动模块 ID 上传 测试版1
      * @param call
      * @param result
      */
     public static void startMokuai(MethodCall call, MethodChannel.Result result) {
         String divMac = call.argument("divMac");
         DevManager.getInstance().writeEMS(DevManager.getInstance().startMokuai(divMac));
+        result.success("success");
+    }
+
+    /**
+     * APP 启动模块 ID 上传 测试版2
+     * @param call
+     * @param result
+     */
+    public static void startMokuaiT2(MethodCall call, MethodChannel.Result result) {
+        String divMac = call.argument("divMac");
+        DevManager.getInstance().writeEMS(DevManager.getInstance().startMokuaiT2(divMac));
         result.success("success");
     }
 

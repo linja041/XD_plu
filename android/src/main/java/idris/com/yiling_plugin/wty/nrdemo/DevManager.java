@@ -690,9 +690,9 @@ public class DevManager {
                                                         int state = onePack[2];
                                                         final String result;
                                                         if (state == 0) {
-                                                            result = "启动模块成功";
+                                                            result = "上报成功";
                                                         }else{
-                                                            result = "启动模块失败";
+                                                            result = "上报失败";
                                                         }
                                                         mActivity.runOnUiThread(new Runnable() {
                                                             @Override
@@ -768,7 +768,8 @@ public class DevManager {
         return head == 0xf1 || head == 0xf3 || head == 0xe2 || head == 0xe3 || head == 0xd2 ||
                 head == 0xc1 || head == 0xc3 || head == 0xa1 || head == 0xa3 || head == 0xa5 ||
                 head == 0xd4 || head == 0xa7 || head == 0xa9 || head == 0xaf || head == 0xd8 ||
-                head == 0xd6 || head == 0xb9 || head == 0xb6 || head == 0xbc || head == 0xbb || head == 0xae;
+                head == 0xd6 || head == 0xb9 || head == 0xb6 || head == 0xbc || head == 0xbb ||
+                head == 0xae;
     }
 
     public int getPackLen(int head) {
@@ -1163,7 +1164,7 @@ public class DevManager {
     }
 
     public byte[] startMokuai(String divMac) {
-        byte[] xinDian_end = new byte[10];
+        byte[] xinDian_end = new byte[11];
         xinDian_end[0] = (byte) 0xFD;
         xinDian_end[1] = (byte) 0xAE;
         String [] dv = divMac.split(":");
@@ -1176,7 +1177,24 @@ public class DevManager {
         xinDian_end[8] = (byte) 00;
         xinDian_end[9] = (byte) 00;
 
-        xinDian_end[29] = Crc7Chksum(xinDian_end, 11);
+        xinDian_end[10] = Crc7Chksum(xinDian_end, 11);
+
+        return xinDian_end;
+    }
+
+
+    public byte[] startMokuaiT2(String divMac) {
+        byte[] xinDian_end = new byte[11];
+        xinDian_end[0] = (byte) 0xFD;
+        xinDian_end[1] = (byte) 0xAE;
+        for(int i = 0 ; i < 8 ; i++){
+            xinDian_end[i+2] = divMac.getBytes()[i];
+        }
+
+        xinDian_end[8] = (byte) 00;
+        xinDian_end[9] = (byte) 00;
+
+        xinDian_end[10] = Crc7Chksum(xinDian_end, 11);
 
         return xinDian_end;
     }

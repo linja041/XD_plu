@@ -408,6 +408,16 @@ class TestState extends State<Test>{
     yl.closeDevice(mac);
   }
 
+  //上报ID1
+  void startMokuai (){
+    yl.startMokuai(mac:mac);
+  }
+
+  //上报ID2
+  void startMokuaiT2 (){
+    yl.startMokuaiT2(mac:mac);
+  }
+
   void stopCunka(){
     yl.stopCunKa().then((result){
       setState(() {
@@ -775,6 +785,40 @@ class TestState extends State<Test>{
                     child: Text("connIpStatus"),
                   ),
                 ),
+              ),
+              Row(
+                children: <Widget>[
+                  Container(
+                    height: 40,
+                    width: 100,
+                    margin: EdgeInsets.only(bottom: 5.0,right: 10.0,top: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: startMokuai,
+                        child: Text("上报ID 测试1"),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 100,
+                    margin: EdgeInsets.only(bottom: 5.0,right: 10.0,top: 5.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF0000), width: 2.5), // 边色与边宽度
+                      borderRadius: new BorderRadius.circular((5.0)), // 圆角
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: startMokuaiT2,
+                        child: Text("上报ID 测试2"),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Container(
                 height: 40,

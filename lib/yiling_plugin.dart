@@ -190,9 +190,15 @@ Future<String> quesyIpConn() async {
   return result;
 }
 
-///APP 启动模块 ID 上传
+///APP 启动模块 ID 上传 测试版1
 Future<String> startMokuai({String mac}) async {
   String result = await _channel.invokeMethod("startMokuai",{"divMac":mac});
+  return result;
+}
+
+///APP 启动模块 ID 上传 测试版2
+Future<String> startMokuaiT2({String mac}) async {
+  String result = await _channel.invokeMethod("startMokuaiT2",{"divMac":mac});
   return result;
 }
 
