@@ -8,11 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/YilingPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/YilingPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/handler/YiLingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/DevManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/yiling_plugin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/yiling_plugin.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -29,22 +26,14 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_25" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="882QAEUS8YVYK" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="815" column="45" lean-forward="true" selection-start-line="815" selection-start-column="45" selection-end-line="815" selection-end-column="45" />
-              <folding>
-                <element signature="e#14171#15073#0" />
-                <element signature="e#15102#16003#0" />
-                <element signature="e#16032#16933#0" />
-                <element signature="e#16962#17863#0" />
-                <element signature="e#17892#18727#0" />
-                <element signature="e#22016#22584#0" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="423" column="31" selection-start-line="423" selection-start-column="31" selection-end-line="423" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -52,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
+            <state relative-caret-position="4439">
               <caret line="199" column="28" selection-start-line="199" selection-start-column="15" selection-end-line="199" selection-end-column="28" />
             </state>
           </provider>
@@ -86,6 +75,7 @@
       <find>xindian</find>
       <find>goXinDian</find>
       <find>responseFromDevStop</find>
+      <find>startMokuai</find>
     </findStrings>
     <replaceStrings>
       <replace>(</replace>
@@ -126,6 +116,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,6 +132,11 @@
             <path>
               <item name="xd_pug" type="b2602c69:ProjectViewProjectNode" />
               <item name="xd_pug" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xd_pug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xd_pug" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -152,7 +148,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -481,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578989799416</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="final 1.10+9">
+      <created>1579445100865</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1579445100865</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -495,9 +497,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31769437" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32171583" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -530,7 +531,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="配网" />
     <MESSAGE value="duka" />
     <MESSAGE value="final 1.0" />
     <MESSAGE value="final 1.01" />
@@ -555,7 +555,8 @@
     <MESSAGE value="final 1.10+6" />
     <MESSAGE value="final 1.10+7" />
     <MESSAGE value="final 1.10+8" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.10+8" />
+    <MESSAGE value="final 1.10+9" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.10+9" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/model/xindian_result.java" />
@@ -633,25 +634,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="199" column="28" selection-start-line="199" selection-start-column="15" selection-end-line="199" selection-end-column="28" />
+        <state relative-caret-position="51">
+          <caret line="423" column="31" selection-start-line="423" selection-start-column="31" selection-end-line="423" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+    <entry file="file://$PROJECT_DIR$/lib/yiling_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="815" column="45" lean-forward="true" selection-start-line="815" selection-start-column="45" selection-end-line="815" selection-end-column="45" />
-          <folding>
-            <element signature="e#14171#15073#0" />
-            <element signature="e#15102#16003#0" />
-            <element signature="e#16032#16933#0" />
-            <element signature="e#16962#17863#0" />
-            <element signature="e#17892#18727#0" />
-            <element signature="e#22016#22584#0" />
-          </folding>
+        <state relative-caret-position="4439">
+          <caret line="199" column="28" selection-start-line="199" selection-start-column="15" selection-end-line="199" selection-end-column="28" />
         </state>
       </provider>
     </entry>

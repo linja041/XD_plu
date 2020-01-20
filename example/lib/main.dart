@@ -178,6 +178,9 @@ class TestState extends State<Test>{
       print("ConnIpStatusResult===========" + data.toString());
     });
 
+    yl.responseFromStartMokuai.listen((data){
+      showToast(data.toString());
+    });
   }
 
   Future<void> initBluetooth() async {
@@ -410,12 +413,16 @@ class TestState extends State<Test>{
 
   //上报ID1
   void startMokuai (){
-    yl.startMokuai(mac:mac);
+    yl.startMokuai(mac:mac).then((data){
+      showToast("开始上报ID："+"DF:03:2F:1C:A0:0A");
+    });
   }
 
   //上报ID2
   void startMokuaiT2 (){
-    yl.startMokuaiT2(mac:mac);
+    yl.startMokuaiT2(mac:mac).then((data){
+      showToast("开始上报ID："+mac);
+    });
   }
 
   void stopCunka(){
@@ -814,7 +821,7 @@ class TestState extends State<Test>{
                     child: Center(
                       child: GestureDetector(
                         onTap: startMokuaiT2,
-                        child: Text("上报ID 测试2"),
+                        child: Text("上报ID 测试2.1"),
                       ),
                     ),
                   ),

@@ -1168,7 +1168,7 @@ public class DevManager {
         xinDian_end[0] = (byte) 0xFD;
         xinDian_end[1] = (byte) 0xAE;
         String [] dv = divMac.split(":");
-        for(int i = 0;i<dv.length;i++){
+        for(int i = 0;i<6;i++){
             String dvTemp = dv[i];
             System.out.println("dv"+ i + "=====" + dvTemp);
             xinDian_end[i+2] = (byte) dvTemp.getBytes()[i];
@@ -1182,21 +1182,24 @@ public class DevManager {
         return xinDian_end;
     }
 
-
     public byte[] startMokuaiT2(String divMac) {
-        byte[] xinDian_end = new byte[11];
-        xinDian_end[0] = (byte) 0xFD;
-        xinDian_end[1] = (byte) 0xAE;
-        for(int i = 0 ; i < 8 ; i++){
-            xinDian_end[i+2] = divMac.getBytes()[i];
+        byte[] reportId = new byte[11];
+        reportId[0] = (byte) 0xFD;
+        reportId[1] = (byte) 0xAE;
+        String [] dv = divMac.split(":");
+        for(int i = 0 ; i < 6 ; i++){
+            byte dvMac = Integer.valueOf(dv[i],16).byteValue();
+            System.out.println("dvmac"+i+"====="+dvMac);
+            System.out.println("dvmac"+i+"====="+Integer.toHexString(dvMac));
+            reportId[i+2] = (byte) dvMac;
         }
 
-        xinDian_end[8] = (byte) 00;
-        xinDian_end[9] = (byte) 00;
+        reportId[8] = (byte) 00;
+        reportId[9] = (byte) 00;
 
-        xinDian_end[10] = Crc7Chksum(xinDian_end, 11);
+        reportId[10] = Crc7Chksum(reportId, 11);
 
-        return xinDian_end;
+        return reportId;
     }
 
     public static byte Crc7Chksum(byte[] DataBuf, int Len) {
