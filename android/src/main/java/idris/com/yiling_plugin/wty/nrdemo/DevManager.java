@@ -568,6 +568,14 @@ public class DevManager {
 
                                                     if (onePack.length > 20 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xe2) {
                                                         DataEvent dataEvent = new DataEvent();
+                                                        int[] data1=new int[20];
+                                                        int[] data2=new int[20];
+                                                        int[] data11=new int[20];
+                                                        int[] data12=new int[20];
+                                                        int[] data13=new int[20];
+                                                        int[] data14=new int[20];
+                                                        int[] data15=new int[20];
+                                                        int[] data16=new int[20];
                                                         byte[] xd_wave = new byte[160];
                                                         for (int ii = 0; ii < xd_wave.length; ii++) {
                                                             xd_wave[ii] = onePack[ii + 8];
@@ -582,9 +590,7 @@ public class DevManager {
                                                         byte[] xd_w15 = new byte[2];
                                                         byte[] xd_w16 = new byte[2];
 
-                                                        for (int ii = 0, j = 0; ii < xd_wave.length; j++) {
-                                                            xd_wave[ii] = (byte)0.1;
-
+                                                        for (int ii = 0, j = 0 , k = 0; ii < xd_wave.length; j++) {
                                                             xd_w[0] = xd_wave[ii + 1];
                                                             xd_w[1] = xd_wave[ii];
 
@@ -609,6 +615,23 @@ public class DevManager {
                                                             xd_w16[0] = xd_wave[ii + 15];
                                                             xd_w16[1] = xd_wave[ii + 14];
 
+                                                            data1[k] = 0xff&xd_w[0];
+                                                            data1[k+1] = 0xff&xd_w[1];
+                                                            data2[k] = 0xff&xd_w1[0];
+                                                            data2[k+1] = 0xff&xd_w1[1];
+                                                            data11[k] = 0xff&xd_w11[0];
+                                                            data11[k+1] = 0xff&xd_w11[1];
+                                                            data12[k] = 0xff&xd_w12[0];
+                                                            data12[k+1] = 0xff&xd_w12[1];
+                                                            data13[k] = 0xff&xd_w13[0];
+                                                            data13[k+1] = 0xff&xd_w13[1];
+                                                            data14[k] = 0xff&xd_w14[0];
+                                                            data14[k+1] = 0xff&xd_w14[1];
+                                                            data15[k] = 0xff&xd_w15[0];
+                                                            data15[k+1] = 0xff&xd_w15[1];
+                                                            data16[k] = 0xff&xd_w16[0];
+                                                            data16[k+1] = 0xff&xd_w16[1];
+
                                                             dataEvent.data1[j] = DataTreater.byteToShort(xd_w[0], xd_w[1]);
                                                             dataEvent.data2[j] = DataTreater.byteToShort(xd_w1[0], xd_w1[1]);
                                                             dataEvent.data11[j] = DataTreater.byteToShort(xd_w11[0], xd_w11[1]);
@@ -619,6 +642,7 @@ public class DevManager {
                                                             dataEvent.data16[j] = DataTreater.byteToShort(xd_w16[0], xd_w16[1]);
 
                                                             ii += 16;
+                                                            k += 2;
 
                                                         }
 
@@ -635,18 +659,19 @@ public class DevManager {
                                                             dataEvent.isNormal = true;
                                                         }
                                                         EventBus.getDefault().post(dataEvent);
+
                                                         final HashMap<String, Object> map = new HashMap<>();
 
                                                         List list = new ArrayList<>(Arrays.asList(dataEvent.data1));
-                                                        System.out.println("----------->dataEvent.data1:" + toList(dataEvent.data1) + "<------------");
-                                                        map.put("data1", toList(dataEvent.data1));
-                                                        map.put("data2", toList(dataEvent.data2));
-                                                        map.put("data11", toList(dataEvent.data11));
-                                                        map.put("data12", toList(dataEvent.data12));
-                                                        map.put("data13", toList(dataEvent.data13));
-                                                        map.put("data14", toList(dataEvent.data14));
-                                                        map.put("data15", toList(dataEvent.data15));
-                                                        map.put("data16", toList(dataEvent.data16));
+                                                        //System.out.println("----------->dataEvent.data1:" + toList(dataEvent.data1) + "<------------");
+                                                        map.put("data1", toList(data1));
+                                                        map.put("data2", toList(data2));
+                                                        map.put("data11", toList(data11));
+                                                        map.put("data12", toList(data12));
+                                                        map.put("data13", toList(data13));
+                                                        map.put("data14", toList(data14));
+                                                        map.put("data15", toList(data15));
+                                                        map.put("data16", toList(data16));
                                                         map.put("isTuo", dataEvent.isTuo);
                                                         map.put("isNormal",dataEvent.isNormal);
                                                         map.put("hr", dataEvent.hr);
