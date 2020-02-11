@@ -72,7 +72,7 @@ public class EcgSurfaceView extends SurfaceView implements SurfaceHolder.Callbac
     private float ydpi;//y轴纵向向屏幕像素密度
     private float yPixelPerMm;//y轴每毫米像素点个数
     private float range;//每毫伏mv幅度(单位像素)
-    private float enhance = 10;//y轴增益默认10
+    private float enhance = 20;//y轴增益默认10
     private float zoom = 4.900000f / 1000f;//y轴放大倍数 用来和硬件1mv波形比例对应，所有的y点都需要乘这个比例0.0049
     private float mv;//毫伏
     private int transparentPoints;//透明点个数
