@@ -22,7 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ecg.ecgalgorithm.ecglib;
+//import com.ecg.ecgalgorithm.ecglib;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -35,7 +35,7 @@ import idris.com.yiling_plugin.wty.nrdemo.util.DataTreater;
 import idris.com.yiling_plugin.wty.nrdemo.util.FileSave;
 
 public class ViewDKAct extends AppCompatActivity {
-    private ecglib ndkLibTool;
+//    private ecglib ndkLibTool;
     private Spinner button1;
 
     ArrayList<Integer> data = new ArrayList<>();
@@ -225,9 +225,9 @@ public class ViewDKAct extends AppCompatActivity {
         });
 
 
-        ndkLibTool = new ecglib();
+//        ndkLibTool = new ecglib();
         short[] mFilter = {1, 0, 0};
-        ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
+//        ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -351,8 +351,8 @@ public class ViewDKAct extends AppCompatActivity {
                             input[7] = (int) DataTreater.byteToShort(xd_w15[1], xd_w15[0]);
                             input[8] = (int) DataTreater.byteToShort(xd_w16[1], xd_w16[0]);
 //                    Log.d("debug", "input: "+ Arrays.toString(input));
-                            ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
-                                    isHeartBeat);
+//                            ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
+//                                    isHeartBeat);
                             data.add(Output[0]);
                             data1.add(Output[1]);
                             data2.add(Output[2]);

@@ -6,13 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/EcgSurfaceView.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/wty/nrdemo/EcgSurfaceView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -34,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
+            <state relative-caret-position="253">
+              <caret line="252" column="9" lean-forward="true" selection-start-line="252" selection-start-column="9" selection-end-line="252" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -534,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580876827372</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="final 1.11">
+      <created>1581416820938</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1581416820939</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -548,6 +549,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23324397" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -582,7 +584,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="final 1.01" />
     <MESSAGE value="final 1.02" />
     <MESSAGE value="final 1.02-test" />
     <MESSAGE value="final 1.03" />
@@ -607,7 +608,8 @@
     <MESSAGE value="final 1.10+9" />
     <MESSAGE value="final 1.10+10" />
     <MESSAGE value="final 1.10+11" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.10+11" />
+    <MESSAGE value="final 1.11" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.11" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/model/xindian_result.java" />
@@ -694,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
+        <state relative-caret-position="253">
+          <caret line="252" column="9" lean-forward="true" selection-start-line="252" selection-start-column="9" selection-end-line="252" selection-end-column="9" />
         </state>
       </provider>
     </entry>
