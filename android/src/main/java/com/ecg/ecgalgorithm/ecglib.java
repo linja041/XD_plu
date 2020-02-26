@@ -3,9 +3,9 @@ package com.ecg.ecgalgorithm;
 public class ecglib {
 
     // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
+//    static {
+//        System.loadLibrary("native-lib");
+//    }
 
 
     public static int test() {
