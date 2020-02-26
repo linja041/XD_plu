@@ -58,7 +58,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     private TextView hvti;
     private TextView hvf;
-    private ecglib ndkLibTool;
+//    private ecglib ndkLibTool;
     private Spinner button1;
 
     private TextView tv1;
@@ -90,7 +90,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_xin_dian);
         EventBus.getDefault().register(this);
 
-        ndkLibTool = new ecglib();
+//        ndkLibTool = new ecglib();
 
         SetTranslanteBar();
         mBtnConnectDoc = findViewById(R.id.btn_connect_doc);
@@ -257,7 +257,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         });
 
 
-        ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
+//        ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
 
 
     }
@@ -371,19 +371,44 @@ public class ShowXinDianActivity extends AppCompatActivity {
             int[] Output = new int[12];
             short[] isHeartBeat = {0};
 
-            input[0] = event.data1[i]+i;
-            input[1] = event.data2[i]+i;
-            input[2] = (input[1] - input[0]);
-            input[3] = event.data11[i]+i;
-            input[4] = event.data12[i]+i;
-            input[5] = event.data13[i]+i;
-            input[6] = event.data14[i]+i;
-            input[7] = event.data15[i]+i;
-            input[8] = event.data16[i]+i;
+
+//            input[0] = event.data1[i]+i;
+//            input[1] = event.data2[i]+i;
+//            input[2] = (input[1] - input[0]);
+//            input[3] = event.data11[i]+i;
+//            input[4] = event.data12[i]+i;
+//            input[5] = event.data13[i]+i;
+//            input[6] = event.data14[i]+i;
+//            input[7] = event.data15[i]+i;
+//            input[8] = event.data16[i]+i;
 //                    Log.d("debug", "input: "+ Arrays.toString(input));
-            ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
-                    isHeartBeat);
+//            ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
+//                    isHeartBeat);
 //                    Log.d("debug", "onClick: "+ Arrays.toString(Output));
+            //I
+            Output[0] = event.data1[i]+i;
+            //II
+            Output[1] = event.data2[i]+i;
+            //III
+            Output[2] = (Output[1] - Output[0]);
+            //avR
+            Output[3] = 0 - (Output[0] + Output[1]) / 2;
+            //avL
+            Output[4] = Output[0] - Output[1] / 2;
+            //avF
+            Output[5] = Output[1] - Output[0] / 2;
+            //V1
+            Output[6] = event.data11[i]+i;
+            //V2
+            Output[7] = event.data12[i]+i;
+            //V3
+            Output[8] = event.data13[i]+i;
+            //V4
+            Output[9] = event.data14[i]+i;
+            //V5
+            Output[10] = event.data15[i]+i;
+            //V6
+            Output[11] = event.data16[i]+i;
 
             if (lead == 0) {
                 data.add(Output[0]);
