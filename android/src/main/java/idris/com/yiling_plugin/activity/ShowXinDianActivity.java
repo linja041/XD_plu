@@ -3,11 +3,18 @@ package idris.com.yiling_plugin.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -26,11 +33,14 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import idris.com.yiling_plugin.R;
+import idris.com.yiling_plugin.activity.widget.HrDialog;
 import idris.com.yiling_plugin.handler.YiLingResponseHandler;
 import idris.com.yiling_plugin.wty.nrdemo.DevManager;
 import idris.com.yiling_plugin.wty.nrdemo.EcgSurfaceView;
@@ -39,6 +49,7 @@ import idris.com.yiling_plugin.wty.nrdemo.model.CKSucc;
 import idris.com.yiling_plugin.wty.nrdemo.model.CunkRes;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataAynResult;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataEvent;
+import idris.com.yiling_plugin.wty.nrdemo.model.DataEventTest;
 import idris.com.yiling_plugin.wty.nrdemo.model.DeviceConnState;
 import idris.com.yiling_plugin.wty.nrdemo.model.Dianliang;
 import idris.com.yiling_plugin.wty.nrdemo.util.ByteUtils;
@@ -58,7 +69,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     private TextView hvti;
     private TextView hvf;
-//    private ecglib ndkLibTool;
+    private Button mBtnShowDialog;
     private Spinner button1;
 
     private TextView tv1;
@@ -75,7 +86,9 @@ public class ShowXinDianActivity extends AppCompatActivity {
     private TextView mTvDocName;
     private ImageView mIvAva;
 
-//    Timer timer;
+    private AlertDialog mAlertDialog = null;
+    String nowTime;
+
     int count = 10;
     private EcgSurfaceView ecgView;
 
@@ -105,8 +118,37 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
                 DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-                DevManager.getInstance().close();
+                DevManager.getInstance().closeDevice(divMac);
                 YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
+            }
+        });
+
+        /**
+         * 初始化心率弹窗
+         */
+        View view1 = LayoutInflater.from(ShowXinDianActivity.this).inflate(R.layout.dialog_hr,null);
+        TextView mBtnOk;
+        mBtnOk = view1.findViewById(R.id.btn_ok);
+        mBtnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAlertDialog.dismiss();
+            }
+        });
+
+        mAlertDialog = new AlertDialog.Builder(this).setView(view1).create();
+
+        /**
+         * 心率弹窗显示按钮
+         */
+        mBtnShowDialog = findViewById(R.id.btn_show);
+        mBtnShowDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mAlertDialog.show();
+                mHandler.sendEmptyMessage(0);
+
             }
         });
 
@@ -181,6 +223,9 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tv4.setVisibility(View.VISIBLE);
                     tv5.setVisibility(View.VISIBLE);
                     tv6.setVisibility(View.VISIBLE);
+                    mBtnShowDialog.setVisibility(View.VISIBLE);
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
+                    nowTime = df.format(new Date());
                     button2.setText("停止检测");
 
                     Log.e("cunka", fileName + ":" + name + ":" + sex + ":" + age);
@@ -233,7 +278,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     data5.clear();
 
 
-                } else {
+                } else{
 
                     tv1.setText("I");
                     tv2.setText("II");
@@ -292,6 +337,12 @@ public class ShowXinDianActivity extends AppCompatActivity {
     float x4 = 0;
     float x5 = 0;
     int lead = 0;
+    int minHr = 0;
+    int hr = 0;
+    int maxHr = 0;
+    boolean isNormal = true;
+    int advHr = 0;
+    int hrSize = 0;
 
     short[] mFilter = {1, 0, 0};
     short[] isHeart = {0};
@@ -360,6 +411,32 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     mRlTips.setBackgroundColor(Color.parseColor("#FB4C43"));
                 }
                 tvHr.setText("心率："+event.hr+"");
+                //初始化心率
+                if(hr == 0){
+                    hr = event.hr;
+                    minHr = event.hr;
+                    maxHr = event.hr;
+                }else if(event.hr < hr){
+                    //心率小于之前记录
+                    minHr = event.hr;
+                }else if(event.hr > hr){
+                    //心率大于之前记录
+                    maxHr = event.hr;
+                }
+                //获取平均心率
+                getAdv(advHr);
+                //心率过慢
+                if(event.hr < 55){
+                    isNormal = false;
+                    mAlertDialog.show();
+                    mHandler.sendEmptyMessage(0);
+                }
+                //心率过快
+                if(event.hr >110){
+                    isNormal = false;
+                    mAlertDialog.show();
+                    mHandler.sendEmptyMessage(0);
+                }
 
 
             }
@@ -489,11 +566,62 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Object myEvent){
+
+    }
+
+    public int getAdv(int lastAdv){
+        if(hrSize == 0){
+            return lastAdv;
+        }
+        int lastSum = lastAdv*hrSize;
+        hrSize++;
+        advHr = (int)(lastSum/hrSize);
+        return advHr;
+    }
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            int what = msg.what;
+            if (what == 0) {	//update
+                TextView mTvNormal,mTvNowHr,mTvAdvHr,mTvMinHr,mTvMin2Hr,mTvMaxHr;
+
+                TextView mTvStartTime = mAlertDialog.findViewById(R.id.tv_startTime);
+                mTvNormal = mAlertDialog.findViewById(R.id.tv_normal);
+                mTvNowHr = mAlertDialog.findViewById(R.id.tv_nowHr);
+                mTvAdvHr = mAlertDialog.findViewById(R.id.tv_advHr);
+                mTvMinHr = mAlertDialog.findViewById(R.id.tv_minHr);
+                mTvMin2Hr = mAlertDialog.findViewById(R.id.tv_minHr2);
+                mTvMaxHr = mAlertDialog.findViewById(R.id.tv_maxHr);
+                mTvAdvHr.setText(advHr+"");
+                if(!isNormal){
+                    mTvNormal.setText("心率异常");
+                }else{
+                    mTvNormal.setText("");
+                }
+                mTvNowHr.setText(hr+"");
+                mTvMinHr.setText(minHr+"");
+                mTvMin2Hr.setText(minHr+"");
+                mTvMaxHr.setText(maxHr+"");
+                mTvStartTime.setText(nowTime+" ");
+
+                if(mAlertDialog.isShowing()){
+                    mHandler.sendEmptyMessageDelayed(0,1000);
+                }
+            }else {
+                mAlertDialog.cancel();
+            }
+        }
+    };
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ecgView.clearData();
         ecgView.clearWave();
+
         EventBus.getDefault().unregister(this);
         System.out.println("==onDestroy");
     }
