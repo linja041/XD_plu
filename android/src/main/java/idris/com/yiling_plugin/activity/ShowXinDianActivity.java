@@ -7,10 +7,8 @@ import android.graphics.Paint;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -40,19 +38,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import idris.com.yiling_plugin.R;
-import idris.com.yiling_plugin.activity.widget.HrDialog;
 import idris.com.yiling_plugin.handler.YiLingResponseHandler;
 import idris.com.yiling_plugin.wty.nrdemo.DevManager;
 import idris.com.yiling_plugin.wty.nrdemo.EcgSurfaceView;
 import idris.com.yiling_plugin.wty.nrdemo.EcgWaveData;
 import idris.com.yiling_plugin.wty.nrdemo.model.CKSucc;
-import idris.com.yiling_plugin.wty.nrdemo.model.CunkRes;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataAynResult;
 import idris.com.yiling_plugin.wty.nrdemo.model.DataEvent;
-import idris.com.yiling_plugin.wty.nrdemo.model.DataEventTest;
 import idris.com.yiling_plugin.wty.nrdemo.model.DeviceConnState;
 import idris.com.yiling_plugin.wty.nrdemo.model.Dianliang;
-import idris.com.yiling_plugin.wty.nrdemo.util.ByteUtils;
 import idris.com.yiling_plugin.wty.nrdemo.util.FileSave;
 
 public class ShowXinDianActivity extends AppCompatActivity {
@@ -87,7 +81,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
     private ImageView mIvAva;
 
     private AlertDialog mAlertDialog = null;
-    String nowTime;
+    String nowTime = "";
 
     int count = 10;
     private EcgSurfaceView ecgView;
@@ -103,7 +97,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_xin_dian);
         EventBus.getDefault().register(this);
 
-//        ndkLibTool = new ecglib();
 
         SetTranslanteBar();
         mBtnConnectDoc = findViewById(R.id.btn_connect_doc);
@@ -301,10 +294,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
             }
         });
 
-
-//        ndkLibTool.nativeSetNhlFilter(mFilter, (short) 250);
-
-
     }
 
     String fileName;
@@ -418,9 +407,11 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     maxHr = event.hr;
                 }else if(event.hr < hr){
                     //心率小于之前记录
+                    hr = event.hr;
                     minHr = event.hr;
                 }else if(event.hr > hr){
                     //心率大于之前记录
+                    hr = event.hr;
                     maxHr = event.hr;
                 }
                 //获取平均心率
@@ -573,9 +564,10 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     public int getAdv(int lastAdv){
         if(hrSize == 0){
+            hrSize++;
             return lastAdv;
         }
-        int lastSum = lastAdv*hrSize;
+        int lastSum = lastAdv * hrSize;
         hrSize++;
         advHr = (int)(lastSum/hrSize);
         return advHr;
