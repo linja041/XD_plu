@@ -6,4 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AlertDialog" parent="@android:style/Theme.DeviceDefault.Dialog">
+        <!--该行代码就是设置AlertDialog的背景-->
+        <item name="android:background">@drawable/bg_hr_dialog</item>
+    </style>
 </resources>

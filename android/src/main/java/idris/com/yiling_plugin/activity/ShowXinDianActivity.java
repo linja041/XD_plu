@@ -129,7 +129,9 @@ public class ShowXinDianActivity extends AppCompatActivity {
             }
         });
 
-        mAlertDialog = new AlertDialog.Builder(this).setView(view1).create();
+        mAlertDialog = new AlertDialog.Builder(this,R.style.AlertDialog)
+                .setView(view1)
+                .create();
 
         /**
          * 心率弹窗显示按钮
@@ -419,16 +421,19 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 //心率过慢
                 if(event.hr < 55){
                     isNormal = false;
-                    mAlertDialog.show();
-                    mHandler.sendEmptyMessage(0);
+                    if(!mAlertDialog.isShowing()){
+                        mAlertDialog.show();
+                        mHandler.sendEmptyMessage(0);
+                    }
                 }
                 //心率过快
                 if(event.hr >110){
                     isNormal = false;
-                    mAlertDialog.show();
-                    mHandler.sendEmptyMessage(0);
+                    if(!mAlertDialog.isShowing()){
+                        mAlertDialog.show();
+                        mHandler.sendEmptyMessage(0);
+                    }
                 }
-
 
             }
         });
