@@ -125,6 +125,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                canShow = false;
                 mAlertDialog.dismiss();
             }
         });
@@ -334,6 +335,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
     boolean isNormal = true;
     int advHr = 0;
     int hrSize = 0;
+    boolean canShow = true;
 
     short[] mFilter = {1, 0, 0};
     short[] isHeart = {0};
@@ -407,6 +409,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     hr = event.hr;
                     minHr = event.hr;
                     maxHr = event.hr;
+                    advHr = event.hr;
                 }else if(event.hr < hr){
                     //心率小于之前记录
                     hr = event.hr;
@@ -422,16 +425,20 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 if(event.hr < 55){
                     isNormal = false;
                     if(!mAlertDialog.isShowing()){
-                        mAlertDialog.show();
-                        mHandler.sendEmptyMessage(0);
+                        if(canShow){
+                            mAlertDialog.show();
+                            mHandler.sendEmptyMessage(0);
+                        }
                     }
                 }
                 //心率过快
                 if(event.hr >110){
                     isNormal = false;
                     if(!mAlertDialog.isShowing()){
-                        mAlertDialog.show();
-                        mHandler.sendEmptyMessage(0);
+                        if(canShow){
+                            mAlertDialog.show();
+                            mHandler.sendEmptyMessage(0);
+                        }
                     }
                 }
 
@@ -574,6 +581,9 @@ public class ShowXinDianActivity extends AppCompatActivity {
         }
         int lastSum = lastAdv * hrSize;
         hrSize++;
+        if(hrSize%100 == 0){
+            canShow = true;
+        }
         advHr = (int)(lastSum/hrSize);
         return advHr;
     }
