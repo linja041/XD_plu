@@ -219,7 +219,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tv4.setVisibility(View.VISIBLE);
                     tv5.setVisibility(View.VISIBLE);
                     tv6.setVisibility(View.VISIBLE);
-                    mBtnShowDialog.setVisibility(View.VISIBLE);
                     SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
                     nowTime = df.format(new Date());
                     button2.setText("停止检测");

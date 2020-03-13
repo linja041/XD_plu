@@ -197,7 +197,6 @@
             android:background="@drawable/shape"
             android:textSize="12sp"
             android:textColor="@android:color/white"
-            android:visibility="invisible"
             android:text="详细"/>
     </RelativeLayout>
 
