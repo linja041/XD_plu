@@ -86,6 +86,10 @@ public class ShowXinDianActivity extends AppCompatActivity {
     int count = 10;
     private EcgSurfaceView ecgView;
 
+    //判断是否处于检测中
+    Boolean isDetection = false;
+    Boolean isDetectionAndorid = false;
+
     //设置透明
     protected void SetTranslanteBar(){
         StatusBarCompat.translucentStatusBar(this);
@@ -109,9 +113,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
         mBtnConnectDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-                DevManager.getInstance().closeDevice(divMac);
                 YiLingResponseHandler.LXYSOrder("gotoLXYS");finish();
             }
         });
@@ -154,9 +155,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
         btnBackUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
-                DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
-                DevManager.getInstance().closeDevice(divMac);
                 finish();
             }
         });
@@ -200,11 +198,40 @@ public class ShowXinDianActivity extends AppCompatActivity {
         sex = i.getByteExtra("sex",(byte)0);
         age = i.getByteExtra("age",(byte)18);
         divMac = i.getStringExtra("divMac");
+        isDetection = i.getBooleanExtra("isDetection",false);
 
+        //医生头像
         mIvAva = findViewById(R.id.iv_ava);
         Glide.with(this)
                 .load(ava)
                 .into(mIvAva);
+
+        //是否开始检测
+        if(isDetection){
+            tv1.setVisibility(View.VISIBLE);
+            tv2.setVisibility(View.VISIBLE);
+            tv3.setVisibility(View.VISIBLE);
+            tv4.setVisibility(View.VISIBLE);
+            tv5.setVisibility(View.VISIBLE);
+            tv6.setVisibility(View.VISIBLE);
+            SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
+            nowTime = df.format(new Date());
+            button2.setText("停止检测");
+            ecgView.color= Color.parseColor("#eb9591");
+        }
+
+        if(isDetectionAndorid){
+            tv1.setVisibility(View.VISIBLE);
+            tv2.setVisibility(View.VISIBLE);
+            tv3.setVisibility(View.VISIBLE);
+            tv4.setVisibility(View.VISIBLE);
+            tv5.setVisibility(View.VISIBLE);
+            tv6.setVisibility(View.VISIBLE);
+            SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
+            nowTime = df.format(new Date());
+            button2.setText("停止检测");
+            ecgView.color= Color.parseColor("#eb9591");
+        }
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,13 +269,16 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tv5.setVisibility(View.VISIBLE);
                     tv6.setVisibility(View.VISIBLE);
                     button2.setText("开始检测");
+                    isDetectionAndorid = false;
+                    isDetection = false;
 //                    button1.setVisibility(View.INVISIBLE);
 
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopXinDian());
                     DevManager.getInstance().writeEMS(DevManager.getInstance().stopCK());
 //                    ecgView.color=Color.parseColor("#eb9591");
 
-                    YiLingResponseHandler.SCWJOrder("gotoSCWJ");finish();
+                    YiLingResponseHandler.SCWJOrder("gotoSCWJ");
+                    finish();
                 }
             }
         });
@@ -295,6 +325,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 
@@ -387,6 +418,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void run() {
                 /*tvHr.setText("心率：" + event.hr);
                 tvXY1.setText("电压：" + event.dy/100.0f+"伏");*/
+                isDetectionAndorid = true;
 
                 if (event.isTuo) {
                     tvTuo.setText("导联脱落");

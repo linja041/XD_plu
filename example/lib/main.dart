@@ -283,6 +283,7 @@ class TestState extends State<Test>{
       showToast("syncRTC");
       print("syncRTC====>"+result.toString());
     });
+
   }
 
   void goXinDian(

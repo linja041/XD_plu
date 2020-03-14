@@ -71,7 +71,8 @@ Future goXinDian({String fileName,
   String docName,
   String divName,
   String ava,
-  String divMac}) async {
+  String divMac,
+  bool isDetection,}) async {
   String result = await _channel.invokeMethod("goXinDian",{
     "fileName" : fileName,
     "name" : name,
@@ -82,6 +83,7 @@ Future goXinDian({String fileName,
     "divName" : divName,
     "ava" : ava,
     "divMac" : divMac,
+    "isDetection" : isDetection,
   });
   return result;
 }
