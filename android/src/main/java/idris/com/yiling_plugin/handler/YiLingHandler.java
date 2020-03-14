@@ -31,6 +31,7 @@ public class YiLingHandler {
     static String divName;
     static String ava;
     static String divMac;
+    static boolean isDetection;
     static byte sex;
     static byte age;
     static byte mode;
@@ -145,6 +146,7 @@ public class YiLingHandler {
             docName = call.argument("docName");
             divName = call.argument("divName");
             ava = call.argument("ava");
+            isDetection = call.argument("isDetection");
             if (fileName == null) {
                 fileName = UUID8.generateShortUuid1();
             }
@@ -169,6 +171,7 @@ public class YiLingHandler {
         intent.putExtra("age", age);
         intent.putExtra("mode", mode);
         intent.putExtra("divMac",divMac);
+        intent.putExtra("isDetection",isDetection);
         registrar.activity().startActivity(intent);
         result.success("success");
     }
