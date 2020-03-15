@@ -63,6 +63,7 @@ Future syncRTC() async {
 }
 
 ///展示
+///isDetection：是否正在检测
 Future goXinDian({String fileName,
   String name,
   int sex,

@@ -6,12 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-    </list>
+    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573785156497</updated>
-    </task>
-    <task id="LOCAL-00005" summary="配网">
-      <created>1574849108910</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1574849108910</updated>
     </task>
     <task id="LOCAL-00006" summary="duka">
       <created>1575272164362</created>
@@ -417,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584261767548</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="final 1.14+3">
+      <created>1584265866524</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1584265866525</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,7 +432,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="final 1.09" />
     <MESSAGE value="final 1.09+2" />
     <MESSAGE value="final 1.09+3" />
     <MESSAGE value="final 1.09+4" />
@@ -462,6 +456,7 @@
     <MESSAGE value="final 1.14" />
     <MESSAGE value="final 1.14+1" />
     <MESSAGE value="final 1.14+2" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+2" />
+    <MESSAGE value="final 1.14+3" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+3" />
   </component>
 </project>
