@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter/services.dart';
 import 'package:yiling_plugin/yiling_plugin.dart' as yl;
-import 'package:yiling_plugin_example/main2.dart';
 
 void main() => runApp(MyApp());
 
@@ -426,29 +425,16 @@ class TestState extends State<Test>{
     });
   }
 
-  void stopCunka(){
-    yl.stopCunKa().then((result){
-      setState(() {
-        cunka = false;
-      });
-      showToast("stopCunka");
-    });
-  }
-
   int fileName = 20191203;
   void startCunka(String filename,String name,int sex,int age,int mode)async{
     setState(() {
       cunka = true;
       fileName++;
     });
-    await yl.startCunKa(fileName: filename , name: name , sex: sex , age: age , mode: mode);
     showToast("startCunka");
   }
 
   void duka() {
-    yl.duKa().then((value){
-    });
-    showToast("duka");
   }
 
 

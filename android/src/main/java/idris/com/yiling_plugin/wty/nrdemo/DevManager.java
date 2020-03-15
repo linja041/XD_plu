@@ -285,7 +285,7 @@ public class DevManager {
                                                         Log.e("cunka", "onNotify: " + ByteUtils.toHexString(onePack, " "));
                                                         CKSucc2 ckSucc = new CKSucc2();
                                                         ckSucc.code = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+//                                                        EventBus.getDefault().post(ckSucc);
 
                                                     }
 
@@ -324,14 +324,15 @@ public class DevManager {
                                                             });
                                                         }
 
+                                                        System.out.println("存卡结果：" + onePack[2]);
                                                         EventBus.getDefault().post(ckSucc);
                                                     }
 
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xc3) {
                                                         Log.e("dianliang", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        final Dianliang ckSucc = new Dianliang();
+                                                        final Dianliang ckSuccc = new Dianliang();
                                                         float a = DataTreater.byteToShort(onePack[4], onePack[3]) / 100.0f;
-                                                        ckSucc.code = (float) (Math.round(a * 100) / 100.0);
+                                                        ckSuccc.code = (float) (Math.round(a * 100) / 100.0);
 
                                                         mActivity.runOnUiThread(new Runnable() {
                                                             @Override
@@ -339,12 +340,12 @@ public class DevManager {
                                                              * *******************************************
                                                              */
                                                             public void run() {
-                                                                YiLingResponseHandler.sendBtResult(ckSucc.code);
+                                                                YiLingResponseHandler.sendBtResult(ckSuccc.code);
                                                             }
                                                         });
-                                                        System.out.println("-------------->电量：" + ckSucc.code + "<--------------");
+                                                        System.out.println("-------------->电量：" + ckSuccc.code + "<--------------");
 
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        EventBus.getDefault().post(ckSuccc);
                                                     }
                                                     if (onePack.length > 2 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xc1) {
                                                         Log.e("dianliang", "onNotify: " + ByteUtils.toHexString(onePack, " "));
@@ -434,17 +435,17 @@ public class DevManager {
                                                     }
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xaf) {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        CunkRes1 ckSucc = new CunkRes1();
-                                                        ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        CunkRes1 ckSucccc = new CunkRes1();
+                                                        ckSucccc.state = onePack[2];
+                                                        EventBus.getDefault().post(ckSucccc);
 
                                                     }
 
                                                     if (onePack.length > 3 && onePack[0] == (byte) 0xfd && onePack[1] == (byte) 0xd4) {
                                                         Log.e("cun", "onNotify: " + ByteUtils.toHexString(onePack, " "));
-                                                        CunkRes ckSucc = new CunkRes();
-                                                        ckSucc.state = onePack[2];
-                                                        EventBus.getDefault().post(ckSucc);
+                                                        CunkRes ckRes = new CunkRes();
+                                                        ckRes.state = onePack[2];
+                                                        EventBus.getDefault().post(ckRes);
 
                                                     }
 

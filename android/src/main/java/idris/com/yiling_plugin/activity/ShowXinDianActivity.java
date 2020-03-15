@@ -369,22 +369,18 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
     short[] mFilter = {1, 0, 0};
     short[] isHeart = {0};
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCKSucc(CKSucc event) {
 
         if (event.code == 0) {
-            if (!"开始检测".equals(button2.getText().toString())) {
-
-                if (fileName != null && name != null)
-                {
-                    FileSave.saveFileNameList(this, name + "_" + sex + "_" + age, fileName);
-                }
-//                Toast.makeText(ShowXinDianActivity.this, "存卡命令成功", Toast.LENGTH_SHORT).show();
-            } else {
-//                Toast.makeText(ShowXinDianActivity.this, "停止存卡命令成功", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-//            Toast.makeText(ShowXinDianActivity.this, "文件名已存在或命令响应错误", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ShowXinDianActivity.this, "存卡成功", Toast.LENGTH_SHORT).show();
+        } else if(event.code == 1) {
+            Toast.makeText(ShowXinDianActivity.this, "命令响应错误", Toast.LENGTH_SHORT).show();
+        } else if(event.code == 2) {
+            Toast.makeText(ShowXinDianActivity.this, "文件创建失败", Toast.LENGTH_SHORT).show();
+        } else if(event.code == 3) {
+            Toast.makeText(ShowXinDianActivity.this, "文件名已存在", Toast.LENGTH_SHORT).show();
         }
     }
 

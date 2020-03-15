@@ -100,30 +100,6 @@ Future stopWiFi() async {
   return result;
 }
 
-///存卡
-Future startCunKa({String fileName,String name,int sex,int age,int mode}) async {
-  String result = await _channel.invokeMethod("startCunKa",{
-    "fileName" : fileName,
-    "name" : name,
-    "sex" : sex,
-    "age" : age,
-    "mode" : mode,
-  });
-  return result;
-}
-
-///停止存卡
-Future stopCunKa() async {
-  String result = await _channel.invokeMethod("stopCunKa");
-  return result;
-}
-
-///读卡
-Future duKa() async {
-  String result = await _channel.invokeMethod("duKa");
-  return result;
-}
-
 ///启动配网模式
 Future startPeiwang() async {
   String result = await _channel.invokeMethod("startPeiwang");
