@@ -238,7 +238,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if ("开始检测".equals(button2.getText().toString())) {
                     DevManager.getInstance().writeEMS(DevManager.getInstance().startXinDian());
-                    DevManager.getInstance().writeEMS(DevManager.getInstance().getBt());
                     YiLingResponseHandler.startJC("开始检测");
                     tv1.setVisibility(View.VISIBLE);
                     tv2.setVisibility(View.VISIBLE);
@@ -250,10 +249,8 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     nowTime = df.format(new Date());
                     button2.setText("停止检测");
 
-                    Log.e("cunka", fileName + ":" + name + ":" + sex + ":" + age);
                     byte[] data = DevManager.getInstance().startCK(fileName, name, sex, age, (byte) 0);
                     DevManager.getInstance().writeEMS(data);
-
 
                     ecgView.color= Color.parseColor("#eb9591");
 
