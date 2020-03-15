@@ -411,7 +411,20 @@ public class ShowXinDianActivity extends AppCompatActivity {
             public void run() {
                 /*tvHr.setText("心率：" + event.hr);
                 tvXY1.setText("电压：" + event.dy/100.0f+"伏");*/
-                isDetectionAndorid = true;
+                if(isDetection == false){
+                    tv1.setVisibility(View.VISIBLE);
+                    tv2.setVisibility(View.VISIBLE);
+                    tv3.setVisibility(View.VISIBLE);
+                    tv4.setVisibility(View.VISIBLE);
+                    tv5.setVisibility(View.VISIBLE);
+                    tv6.setVisibility(View.VISIBLE);
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
+                    nowTime = df.format(new Date());
+                    button2.setText("停止检测");
+                    ecgView.color= Color.parseColor("#eb9591");
+                    isDetection = true;
+                    isDetectionAndorid = true;
+                }
 
                 if (event.isTuo) {
                     tvTuo.setText("导联脱落");

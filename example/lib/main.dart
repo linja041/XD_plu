@@ -51,6 +51,7 @@ class TestState extends State<Test>{
   bool wifi = false;
   bool cunka = false;
   String cunkaResult = "";
+  bool isDetection = false;
   List<String> ka = new List();
 
   @override
@@ -75,6 +76,10 @@ class TestState extends State<Test>{
     yl.responseFromDevStop.listen((data){
       showToast("设备断开");
       mac = "设备断开";
+    });
+
+    yl.responseFromStartJC.listen((data){
+      isDetection = true;
     });
 
     yl.responseFromStartJC.listen((data){
@@ -294,7 +299,8 @@ class TestState extends State<Test>{
         String docName,
         String divName,
         String ava,
-        String divMac}
+        String divMac,
+        bool isDetection,}
         ){
     yl.goXinDian(fileName: filename ,
       name: name ,
@@ -305,6 +311,7 @@ class TestState extends State<Test>{
       divName: divName,
       ava: ava,
       divMac :divMac,
+      isDetection: isDetection,
     ).then((result){
     });
   }
@@ -494,7 +501,7 @@ class TestState extends State<Test>{
                 child: Center(
                   child: GestureDetector(
                     onTap: (){goXinDian(
-                        filename:"20191222",
+                        filename:"",
                         name:"林骏雄",
                         sex:1,
                         age:20,
@@ -503,6 +510,7 @@ class TestState extends State<Test>{
                         divName:"8848",
                         ava:"http://47.112.202.101/upload/image/201912/8ac4c536-6e47-4bd6-b2db-ee0fa8abb1c0.jpg",
                         divMac: mac
+
                     );},
                     child: Text("开始检测"),
                   ),
