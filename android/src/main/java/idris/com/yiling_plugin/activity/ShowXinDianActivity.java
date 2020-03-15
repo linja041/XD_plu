@@ -379,12 +379,12 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 {
                     FileSave.saveFileNameList(this, name + "_" + sex + "_" + age, fileName);
                 }
-                Toast.makeText(ShowXinDianActivity.this, "存卡命令成功", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ShowXinDianActivity.this, "存卡命令成功", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(ShowXinDianActivity.this, "停止存卡命令成功", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ShowXinDianActivity.this, "停止存卡命令成功", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(ShowXinDianActivity.this, "文件名已存在或命令响应错误", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ShowXinDianActivity.this, "文件名已存在或命令响应错误", Toast.LENGTH_SHORT).show();
         }
     }
 
