@@ -27,7 +27,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-       
+        targetSdkVersion 29
+
     }
     lintOptions {
         disable 'InvalidPackage'

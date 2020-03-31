@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/idris/com/yiling_plugin/activity/ShowXinDianActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,13 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573785156497</updated>
-    </task>
-    <task id="LOCAL-00009" summary="final 1.01">
-      <created>1576742425446</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1576742425446</updated>
     </task>
     <task id="LOCAL-00010" summary="final 1.02">
       <created>1576745153286</created>
@@ -415,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584270995020</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="final 1.14+4">
+      <created>1585668063475</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1585668063476</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +435,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="final 1.09+2" />
     <MESSAGE value="final 1.09+3" />
     <MESSAGE value="final 1.09+4" />
     <MESSAGE value="final 1.09+5" />
@@ -460,6 +459,7 @@
     <MESSAGE value="final 1.14+1" />
     <MESSAGE value="final 1.14+2" />
     <MESSAGE value="final 1.14+3" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+3" />
+    <MESSAGE value="final 1.14+4" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+4" />
   </component>
 </project>
