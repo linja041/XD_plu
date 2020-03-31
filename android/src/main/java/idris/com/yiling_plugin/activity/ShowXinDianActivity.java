@@ -440,8 +440,10 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     tvTuo1.setText("心室大类诊断异常");
                     mRlTips.setBackgroundColor(Color.parseColor("#FB4C43"));
                 }
+
                 tvHr.setText("心率："+event.hr+"");
                 //初始化心率
+                hr = event.hr;
                 if(hr == 0){
                     hr = event.hr;
                     minHr = event.hr;
@@ -489,20 +491,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
             short[] isHeartBeat = {0};
 
 
-//            input[0] = event.data1[i]+i;
-//            input[1] = event.data2[i]+i;
-//            input[2] = (input[1] - input[0]);
-//            input[3] = event.data11[i]+i;
-//            input[4] = event.data12[i]+i;
-//            input[5] = event.data13[i]+i;
-//            input[6] = event.data14[i]+i;
-//            input[7] = event.data15[i]+i;
-//            input[8] = event.data16[i]+i;
-//                    Log.d("debug", "input: "+ Arrays.toString(input));
-//            ndkLibTool.ecg_ProcessDataLead(input, Output, (short) 0,
-//                    isHeartBeat);
-//                    Log.d("debug", "onClick: "+ Arrays.toString(Output));
-            //I
             Output[0] = event.data1[i]+i;
             //II
             Output[1] = event.data2[i]+i;
@@ -534,6 +522,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 data3.add(Output[3]);
                 data4.add(Output[4]);
                 data5.add(Output[5]);
+                ecgView.clearData();
             } else {
                 data.add(Output[6]);
                 data1.add(Output[7]);
@@ -541,6 +530,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 data3.add(Output[9]);
                 data4.add(Output[10]);
                 data5.add(Output[11]);
+                ecgView.clearData();
             }
 //                    Log.d("dd", "onDataEvent: "+event.data1[i]);
 
@@ -660,6 +650,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
             }
         }
     };
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
