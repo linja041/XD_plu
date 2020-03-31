@@ -6,10 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="7a092b9d-c394-4470-8f43-29a910d9af16" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,13 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573785156497</updated>
-    </task>
-    <task id="LOCAL-00010" summary="final 1.02">
-      <created>1576745153286</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1576745153286</updated>
     </task>
     <task id="LOCAL-00011" summary="final 1.02-test">
       <created>1576824055604</created>
@@ -415,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585668063476</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="final 1.14+5">
+      <created>1585668974165</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1585668974165</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +432,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="final 1.09+3" />
     <MESSAGE value="final 1.09+4" />
     <MESSAGE value="final 1.09+5" />
     <MESSAGE value="final 1.10" />
@@ -460,6 +456,7 @@
     <MESSAGE value="final 1.14+2" />
     <MESSAGE value="final 1.14+3" />
     <MESSAGE value="final 1.14+4" />
-    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+4" />
+    <MESSAGE value="final 1.14+5" />
+    <option name="LAST_COMMIT_MESSAGE" value="final 1.14+5" />
   </component>
 </project>

@@ -298,6 +298,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     data3.clear();
                     data4.clear();
                     data5.clear();
+                    ecgView.clearData();
 
 
                 } else{
@@ -314,6 +315,7 @@ public class ShowXinDianActivity extends AppCompatActivity {
                     data3.clear();
                     data4.clear();
                     data5.clear();
+                    ecgView.clearData();
                 }
             }
 
@@ -522,7 +524,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 data3.add(Output[3]);
                 data4.add(Output[4]);
                 data5.add(Output[5]);
-                ecgView.clearData();
             } else {
                 data.add(Output[6]);
                 data1.add(Output[7]);
@@ -530,7 +531,6 @@ public class ShowXinDianActivity extends AppCompatActivity {
                 data3.add(Output[9]);
                 data4.add(Output[10]);
                 data5.add(Output[11]);
-                ecgView.clearData();
             }
 //                    Log.d("dd", "onDataEvent: "+event.data1[i]);
 
