@@ -445,23 +445,26 @@ public class ShowXinDianActivity extends AppCompatActivity {
 
                 tvHr.setText("心率："+event.hr+"");
                 //初始化心率
-                hr = event.hr;
-                if(hr == 0){
+                //hr = event.hr;
+
+                if (hrSize == 0){
                     hr = event.hr;
                     minHr = event.hr;
                     maxHr = event.hr;
-                    advHr = event.hr;
-                }else if(event.hr < hr){
+                }
+
+                if(event.hr < hr){
                     //心率小于之前记录
-                    hr = event.hr;
                     minHr = event.hr;
                 }else if(event.hr > hr){
                     //心率大于之前记录
                     hr = event.hr;
                     maxHr = event.hr;
                 }
+
+                hr = event.hr;
                 //获取平均心率
-                getAdv(advHr);
+                getAdv(hr);
                 //心率过慢
                 if(event.hr < 55){
                     isNormal = false;
@@ -604,9 +607,10 @@ public class ShowXinDianActivity extends AppCompatActivity {
     public int getAdv(int lastAdv){
         if(hrSize == 0){
             hrSize++;
+            advHr = lastAdv;
             return lastAdv;
         }
-        int lastSum = lastAdv * hrSize;
+        int lastSum = advHr * hrSize + lastAdv;
         hrSize++;
         if(hrSize%100 == 0){
             canShow = true;
